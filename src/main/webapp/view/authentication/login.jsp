@@ -11,7 +11,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>FPT University Academic Portal</title>
-        <link rel="stylesheet" href="../../css/authentication/login.css"/>
+        <link rel="stylesheet" href="css/authentication/login.css"/>
+
     </head>
     <body>
         <div id="login-form-wrap">
@@ -19,17 +20,17 @@
             <form id="login-form" action="#" method="POST">
                 <p>
                     <input type="text" id="username" name="username" placeholder="Username" required>
-                   
+
                 </p>
                 <p>
                     <input type="password" id="password" name="password" placeholder="Password" required>
-                    
+
                 </p>
                 <p>
                     <input type="checkbox" name="remember" id="remember-box">
                     <label for="remeber-box">Remember me</label>
                 </p>
-                <p>
+                <p class="button">
                     <input type="submit" id="login" value="Sign in">
                 </p>
             </form> 
