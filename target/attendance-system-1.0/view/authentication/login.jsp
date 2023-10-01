@@ -14,9 +14,8 @@
         <link rel="stylesheet" href="../../css/authentication/login.css"/>
     </head>
     <body>
-
         <div id="login-form-wrap">
-            <h2>Login</h2>
+            <h2>Sign in</h2>
             <form id="login-form" action="#" method="POST">
                 <p>
                     <input type="text" id="username" name="username" placeholder="Username" required>
@@ -31,7 +30,7 @@
                     <label for="remeber-box">Remember me</label>
                 </p>
                 <p>
-                    <input type="submit" id="login" value="Login">
+                    <input type="submit" id="login" value="Sign in">
                 </p>
             </form> 
         </div>  

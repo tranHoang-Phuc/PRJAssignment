@@ -1,3 +1,4 @@
 com\thphuc\system\resource\StudentResource.class
+com\thphuc\system\util\JpaUtil.class
 com\thphuc\system\config\AttendanceManagementSystem.class
 com\thphuc\system\dal\DBContext.class

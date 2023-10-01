@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
     <!-- Define Persistence Unit -->
-    <persistence-unit name="my_persistence_unit">
-        
+    <persistence-unit name="AssignmentPRJ301">
+        <properties>
+            <property name="hibernate.connection.url"
+                      value="jdbc:sqlserver://DESKTOP-R7H31J3\\THPHUC:1433;databaseName=AssignmentPRJ301;encrypt=false"/>
+            <property name="hibernate.connection.driver_class" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+            <property name="hibernate.connection.username" value="sa"/>
+            <property name="hibernate.connection.password" value="PcyTt11@"/>
+        </properties>
     </persistence-unit>
 </persistence>
