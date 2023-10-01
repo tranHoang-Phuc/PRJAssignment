@@ -31,7 +31,7 @@
                     <label for="remeber-box">Remember me</label>
                 </p>
                 <p class="button">
-                    <input type="submit" id="login" value="Sign in">
+                    <button type="submit" id="login">Sign in</button>
                 </p>
             </form> 
         </div>  
