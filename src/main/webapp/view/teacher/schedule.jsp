@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,6 +16,7 @@
         <link rel="stylesheet" href="../../css/teacher/schedule.css"/>
     </head>
     <body>
+        <jsp:include page="../root/header-schedule.jsp"/>
         <div>
             <table>
                 <tr>
@@ -44,65 +47,65 @@
                     <th class="table-heading day"></th>
                     <th class="table-heading day"></th>
                 </tr>
-                <tr>
+                <tr class="row">
                     <td>Slot 1</td>
-                    <td class="lession">-</td>
-                    <td class="lession">-</td>
-                    <td class="lession">-</td>
-                    <td class="lession">-</td>
-                    <td class="lession">-</td>
-                    <td class="lession">-</td>
-                    <td class="lession">-</td> 
+                    <td class="lesson">-</td>
+                    <td class="lesson">-</td>
+                    <td class="lesson">-</td>
+                    <td class="lesson">-</td>
+                    <td class="lesson">-</td>
+                    <td class="lesson">-</td>
+                    <td class="lesson">-</td> 
                 </tr>
-                <tr>
+                <tr class="row">
                     <td>Slot 2</td>
-                    <td class="lession">-</td>
-                    <td class="lession">-</td>
-                    <td class="lession">-</td>
-                    <td class="lession">-</td>
-                    <td class="lession">-</td>
-                    <td class="lession">-</td>
-                    <td class="lession">-</td> 
+                    <td class="lesson">-</td>
+                    <td class="lesson">-</td>
+                    <td class="lesson">-</td>
+                    <td class="lesson">-</td>
+                    <td class="lesson">-</td>
+                    <td class="lesson">-</td>
+                    <td class="lesson">-</td> 
                 </tr>
-                <tr>
+                <tr class="row">
                     <td>Slot 3</td>
-                    <td class="lession">-</td>
-                    <td class="lession">-</td>
-                    <td class="lession">-</td>
-                    <td class="lession">-</td>
-                    <td class="lession">-</td>
-                    <td class="lession">-</td>
-                    <td class="lession">-</td> 
+                    <td class="lesson">-</td>
+                    <td class="lesson">-</td>
+                    <td class="lesson">-</td>
+                    <td class="lesson">-</td>
+                    <td class="lesson">-</td>
+                    <td class="lesson">-</td>
+                    <td class="lesson">-</td> 
                 </tr>
-                <tr>
+                <tr class="row">
                     <td>Slot 4</td>
-                    <td class="lession">-</td>
-                    <td class="lession">-</td>
-                    <td class="lession">-</td>
-                    <td class="lession">-</td>
-                    <td class="lession">-</td>
-                    <td class="lession">-</td>
-                    <td class="lession">-</td> 
+                    <td class="lesson">-</td>
+                    <td class="lesson">-</td>
+                    <td class="lesson">-</td>
+                    <td class="lesson">-</td>
+                    <td class="lesson">-</td>
+                    <td class="lesson">-</td>
+                    <td class="lesson">-</td> 
                 </tr>
-                <tr>
+                <tr class="row">
                     <td>Slot 5</td>
-                    <td class="lession">-</td>
-                    <td class="lession">-</td>
-                    <td class="lession">-</td>
-                    <td class="lession">-</td>
-                    <td class="lession">-</td>
-                    <td class="lession">-</td>
-                    <td class="lession">-</td> 
+                    <td class="lesson">-</td>
+                    <td class="lesson">-</td>
+                    <td class="lesson">-</td>
+                    <td class="lesson">-</td>
+                    <td class="lesson">-</td>
+                    <td class="lesson">-</td>
+                    <td class="lesson">-</td> 
                 </tr>
-                <tr>
+                <tr class="row">
                     <td>Slot 6</td>
-                    <td class="lession">-</td>
-                    <td class="lession">-</td>
-                    <td class="lession">-</td>
-                    <td class="lession">-</td>
-                    <td class="lession">-</td>
-                    <td class="lession">-</td>
-                    <td class="lession">-</td> 
+                    <td class="lesson">-</td>
+                    <td class="lesson">-</td>
+                    <td class="lesson">-</td>
+                    <td class="lesson">-</td>
+                    <td class="lesson">-</td>
+                    <td class="lesson">-</td>
+                    <td class="lesson">-</td> 
                 </tr>
             </table>
         </div>
