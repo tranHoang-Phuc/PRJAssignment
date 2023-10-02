@@ -27,8 +27,17 @@
 
                 </p>
                 <p>
+                    <select name="campus" id="campus">
+                        <option value="0" class="campus-name">Select campus</option>
+                        <option value="1" class="campus-name">FU-Hòa Lạc</option>
+                        <option value="2" class="campus-name">FU-Hồ Chí Minh</option>
+                        <option value="3" class="campus-name" >FU-Đà Nẵng</option>
+                        <option value="4" class="campus-name">FU-Quy Nhơn</option>
+                        <option value="5" class="campus-name">FU-Cần Thơ</option>
+                    </select>
                     <input type="checkbox" name="remember" id="remember-box">
                     <label for="remeber-box">Remember me</label>
+
                 </p>
                 <p class="button">
                     <button type="submit" id="login">Sign in</button>

@@ -59,3 +59,15 @@ body, html {
 #login:hover {
     opacity: 0.9;
 }
+
+#campus {
+    padding: 5px 0px;
+    border-radius: 3px;
+    background-color: #F27024;
+    color: white;
+}
+
+.campus-name {
+    background-color: white;
+    color: black
+}

@@ -18,7 +18,7 @@ public class JpaUtil {
 
     static public EntityManager getEntityManager() {
         if (factory == null || !factory.isOpen()) {
-            factory = Persistence.createEntityManagerFactory("ChangeDB");
+            factory = Persistence.createEntityManagerFactory("AssignmentPRJ301");
         }
         return factory.createEntityManager();
     }
