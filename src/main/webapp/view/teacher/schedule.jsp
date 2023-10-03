@@ -14,98 +14,85 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>FPT University Academic Portal</title>
         <link rel="stylesheet" href="../../css/teacher/schedule.css"/>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
     </head>
     <body>
         <jsp:include page="../root/header-schedule.jsp"/>
         <div>
+            <span>
+                <strong>YEAR</strong>
+            </span>
+            <select name="year" id="year">
+                <option value="2023">2023</option>
+            </select><br> WEEK
+            <select name="week" id="week">
+            </select>
             <table>
                 <tr>
-                    <th class="table-heading" rowspan="2">
-                        <span>
-                            <strong>YEAR</strong>
-                        </span>
-                        <select name="year" id="year">
-                            <option value="2020">2023</option>
-                        </select><br> WEEK
-                        <select name="week" id="week">
-                        </select>
-                    </th>
-                    <th class="table-heading">Monday</th>
-                    <th class="table-heading">Tuesday</th>
-                    <th class="table-heading">Wednesday</th>
-                    <th class="table-heading">Thursday</th>
-                    <th class="table-heading">Friday</th>
-                    <th class="table-heading">Saturday</th>
-                    <th class="table-heading">Sunday</th>
+                    <td class="day-of-week">Mon</td>
+                    <td class="day-of-week">Tue</td>
+                    <td class="day-of-week">Wed</td>
+                    <td class="day-of-week">Thu</td>
+                    <td class="day-of-week">Fri</td>
+                    <td class="day-of-week">Sat</td>
+                    <td class="day-of-week">Sun</td>
                 </tr>
-                <tr>
-                    <th class="table-heading day"></th>
-                    <th class="table-heading day"></th>
-                    <th class="table-heading day"></th>
-                    <th class="table-heading day"></th>
-                    <th class="table-heading day"></th>
-                    <th class="table-heading day"></th>
-                    <th class="table-heading day"></th>
+                <tr class="activities">
+                    <td><span class="day"></span><br><br> </td>
+                    <td><span class="day"></span><br><br> </td>
+                    <td><span class="day"></span><br><br>
+                    </td>
+                    <td><span class="day"></span><br><br> </td>
+                    <td><span class="day"></span><br><br></td>
+                    <td><span class="day"></span><br><br></td>
+                    <td><span class="day"></span><br></td>
                 </tr>
-                <tr class="row">
-                    <td>Slot 1</td>
-                    <td class="lesson">-</td>
-                    <td class="lesson">-</td>
-                    <td class="lesson">-</td>
-                    <td class="lesson">-</td>
-                    <td class="lesson">-</td>
-                    <td class="lesson">-</td>
-                    <td class="lesson">-</td> 
+                <tr id="slot1" class="slot">
+                    <td class="mon">-</td>
+                    <td class="tue">-</td>
+                    <td class="wed">-</td>
+                    <td class="thu">-</td>
+                    <td class="fri">-</td>
+                    <td class="sat">-</td>
+                    <td class="sun">-</td>
                 </tr>
-                <tr class="row">
-                    <td>Slot 2</td>
-                    <td class="lesson">-</td>
-                    <td class="lesson">-</td>
-                    <td class="lesson">-</td>
-                    <td class="lesson">-</td>
-                    <td class="lesson">-</td>
-                    <td class="lesson">-</td>
-                    <td class="lesson">-</td> 
+
+                <tr id="slot2" class="slot">
+                    <td class="mon">-</td>
+                    <td class="tue">-</td>
+                    <td class="wed">-</td>
+                    <td class="thu">-</td>
+                    <td class="fri">-</td>
+                    <td class="sat">-</td>
+                    <td class="sun">-</td>
                 </tr>
-                <tr class="row">
-                    <td>Slot 3</td>
-                    <td class="lesson">-</td>
-                    <td class="lesson">-</td>
-                    <td class="lesson">-</td>
-                    <td class="lesson">-</td>
-                    <td class="lesson">-</td>
-                    <td class="lesson">-</td>
-                    <td class="lesson">-</td> 
+                <tr id="slot3" class="slot">
+                    <td class="mon">-</td>
+                    <td class="tue">-</td>
+                    <td class="wed">-</td>
+                    <td class="thu">-</td>
+                    <td class="fri">-</td>
+                    <td class="sat">-</td>
+                    <td class="sun">-</td>
                 </tr>
-                <tr class="row">
-                    <td>Slot 4</td>
-                    <td class="lesson">-</td>
-                    <td class="lesson">-</td>
-                    <td class="lesson">-</td>
-                    <td class="lesson">-</td>
-                    <td class="lesson">-</td>
-                    <td class="lesson">-</td>
-                    <td class="lesson">-</td> 
+                <tr id="slot4" class="slot">
+                    <td class="mon">-</td>
+                    <td class="tue">-</td>
+                    <td class="wed">-</td>
+                    <td class="thu">-</td>
+                    <td class="fri">-</td>
+                    <td class="sat">-</td>
+                    <td class="sun">-</td>
                 </tr>
-                <tr class="row">
-                    <td>Slot 5</td>
-                    <td class="lesson">-</td>
-                    <td class="lesson">-</td>
-                    <td class="lesson">-</td>
-                    <td class="lesson">-</td>
-                    <td class="lesson">-</td>
-                    <td class="lesson">-</td>
-                    <td class="lesson">-</td> 
-                </tr>
-                <tr class="row">
-                    <td>Slot 6</td>
-                    <td class="lesson">-</td>
-                    <td class="lesson">-</td>
-                    <td class="lesson">-</td>
-                    <td class="lesson">-</td>
-                    <td class="lesson">-</td>
-                    <td class="lesson">-</td>
-                    <td class="lesson">-</td> 
+                <tr id="slot5" class="slot">
+                    <td class="mon">-</td>
+                    <td class="tue">-</td>
+                    <td class="wed">-</td>
+                    <td class="thu">-</td>
+                    <td class="fri">-</td>
+                    <td class="sat">-</td>
+                    <td class="sun">-</td>
                 </tr>
             </table>
         </div>

@@ -1,22 +1,73 @@
-/*
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
-*/
-/* 
-    Created on : Sep 30, 2023, 3:16:25 PM
-    Author     : tran Hoang Phuc
-*/   
-* {
-    margin: 0;
-    padding: 0;
+.day-of-week {
+   text-align: center;
 }
 
-.table-heading {
-    background-color: orangered;
-    color: white;
+tr td {
+   width: 170px;
+   position: relative;
 }
 
-.row {
-    border-bottom: 1px;
+.activities {
+   background-color: #E5E5E5;
 }
 
+td .day {
+   position: absolute;
+   right: 5px;
+   top: 5px;
+}
+
+.lesson {
+   border: 1px solid white;
+   background-color: white;
+   margin: 0px 10px 10px 10px;
+   border-radius: 10px;
+   position: relative;
+}
+
+.room {
+   position: absolute;
+   right: 0;
+   font-size: 13px;
+   top: 3px;
+   color: #8b8b8b;
+}
+
+.bubble-absent {
+   display: inline-block;
+   width: 10px;
+   height: 10px;
+   border-radius: 50%;
+   background-color: red;
+   position: absolute;
+   right: 5px;
+   bottom: 5px
+}
+
+.bubble-present {
+   display: inline-block;
+   width: 10px;
+   height: 10px;
+   border-radius: 50%;
+   background-color: green;
+   margin-left: 5px;
+   position: absolute;
+   right: 5px;
+   bottom: 5px
+}
+
+.bubble-notgiven {
+   display: inline-block;
+   width: 10px;
+   height: 10px;
+   border-radius: 50%;
+   background-color: orange;
+   margin-left: 5px;
+   position: absolute;
+   right: 5px;
+   bottom: 5px
+}
+
+.slot {
+   background-color: #e5e5e5;
+}
