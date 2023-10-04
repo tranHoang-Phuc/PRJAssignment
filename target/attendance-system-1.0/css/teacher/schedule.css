@@ -19,7 +19,7 @@ td .day {
 
 .lesson {
    border: 1px solid white;
-   background-color: white;
+   background-color: rgb(104, 105, 172, 0.3);
    margin: 0px 10px 10px 10px;
    border-radius: 10px;
    position: relative;
@@ -30,7 +30,7 @@ td .day {
    right: 0;
    font-size: 13px;
    top: 3px;
-   color: #8b8b8b;
+   color: rgb(37, 38, 38);
 }
 
 .bubble-absent {
@@ -69,5 +69,73 @@ td .day {
 }
 
 .slot {
-   background-color: #e5e5e5;
+   background-color: white;
+}
+
+.lesson {
+   margin-top: 5px;
+}
+
+.lesson:hover {
+   transform: scale(1.1);
+   transition: transform 0.3s ease
+}
+
+table {
+   margin-top: 10px;
+   border-collapse: collapse;
+   border-color: #6769ac;
+}
+
+table,
+th,
+td {
+   border-top: 3px solid #6769ac;
+   border-bottom: 3px solid #6769ac;
+   border-right: 3px solid #6769ac;
+}
+
+#option-box {
+   width: fit-content;
+   border: 3px solid #6769ac;
+   background-color: #e8e8f4;
+   padding: 10px;
+   border-radius: 10px;
+}
+
+.schedule {
+   margin-left: 155px;
+}
+
+.lesson .group {
+   margin-left: 10px;
+   color: rgb(229, 97, 20);
+   font-weight: bolder;
+}
+
+.course {
+   margin-left: 25px;
+   color: blueviolet;
+}
+
+#clock {
+   color: brown;
+}
+
+.query-box {
+   display: flex;
+}
+
+.search-box {
+   margin-left: 280px;
+}
+
+.search-box .campus-name {
+   margin-bottom: 10px;
+   margin-left: 50%;
+   transform: translateX(-50%);
+}
+
+.search-box #search-bar {
+   width: 250px;
 }

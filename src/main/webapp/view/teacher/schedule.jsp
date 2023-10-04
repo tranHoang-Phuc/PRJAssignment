@@ -19,31 +19,42 @@
     </head>
     <body>
         <jsp:include page="../root/header-schedule.jsp"/>
-        <div>
-            <span>
-                <strong>YEAR</strong>
-            </span>
-            <select name="year" id="year">
-                <option value="2023">2023</option>
-            </select><br> WEEK
-            <select name="week" id="week">
-            </select>
-            <table>
+        <div class="schedule">
+            <div class="query-box">
+                <div id="option-box">
+                    <span>
+                        <strong style="color: red;">YEAR</strong>
+                    </span>
+                    <select name="year" id="year">
+                        <option value="2023">2023</option>
+                        <option value="2023">2022</option>
+                    </select><br> WEEK
+                    <select name="week" id="week">
+                    </select>
+                </div>
+                <div class="search-box">
+                    <span><input type="text" disabled value="Hà Nội" class="campus-name"></span>
+                    <form action="#" method="GET">
+                        <input type="text" name="instructor-code" id="search-bar"><span><button type="submit">View</button></span>
+                    </form>
+                </div>
+            </div>
+
+            <table border="3px">
                 <tr>
-                    <td class="day-of-week">Mon</td>
-                    <td class="day-of-week">Tue</td>
-                    <td class="day-of-week">Wed</td>
-                    <td class="day-of-week">Thu</td>
-                    <td class="day-of-week">Fri</td>
-                    <td class="day-of-week">Sat</td>
-                    <td class="day-of-week">Sun</td>
+                    <td class="day-of-week" style="background-color: #7e7fd1">Mon</td>
+                    <td class="day-of-week" style="background-color: #7e7fd1">Tue</td>
+                    <td class="day-of-week" style="background-color: #7e7fd1">Wed</td>
+                    <td class="day-of-week" style="background-color: #7e7fd1">Thu</td>
+                    <td class="day-of-week" style="background-color: #7e7fd1">Fri</td>
+                    <td class="day-of-week" style="background-color: #7e7fd1">Sat</td>
+                    <td class="day-of-week" style="background-color: #7e7fd1">Sun</td>
                 </tr>
                 <tr class="activities">
-                    <td><span class="day"></span><br><br> </td>
-                    <td><span class="day"></span><br><br> </td>
-                    <td><span class="day"></span><br><br>
-                    </td>
-                    <td><span class="day"></span><br><br> </td>
+                    <td><span class="day"></span><br><br></td>
+                    <td><span class="day"></span><br><br></td>
+                    <td><span class="day"></span><br><br></td>
+                    <td><span class="day"></span><br><br></td>
                     <td><span class="day"></span><br><br></td>
                     <td><span class="day"></span><br><br></td>
                     <td><span class="day"></span><br></td>
@@ -93,9 +104,12 @@
                     <td class="fri">-</td>
                     <td class="sat">-</td>
                     <td class="sun">-</td>
-                </tr>
+                </tr>&nbsp;
             </table>
         </div>
-        <script src="../../js/teacher/schedule.js"></script>
-    </body>
+        <script src="javascript.js"></script>
+
+    </div>
+    <script src="../../js/teacher/schedule.js"></script>
+</body>
 </html>
