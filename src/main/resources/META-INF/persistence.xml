@@ -2,11 +2,21 @@
 <persistence version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
     <!-- Define Persistence Unit -->
     <persistence-unit name="AssignmentPRJ301">
+        <class>com.thphuc.system.model.Role</class>
         <class>com.thphuc.system.model.Account</class>
         <class>com.thphuc.system.model.Campus</class>
         <class>com.thphuc.system.model.Room</class>
         <class>com.thphuc.system.model.Student</class>
-       
+        <class>com.thphuc.system.model.Instructor</class>
+        <class>com.thphuc.system.model.Semester</class>
+        <class>com.thphuc.system.model.Department</class>
+        <class>com.thphuc.system.model.Course</class>
+        <class>com.thphuc.system.model.Group</class>
+        <class>com.thphuc.system.model.StudentGroup</class>
+        <class>com.thphuc.system.model.TimeSlot</class>
+        <class>com.thphuc.system.model.Lesson</class>
+
+
 
         <properties>
             <property name="jakarta.persistence.jdbc.driver"
