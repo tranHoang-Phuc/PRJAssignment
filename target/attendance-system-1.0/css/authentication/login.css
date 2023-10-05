@@ -1,0 +1,73 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Oct 1, 2023, 8:24:40 PM
+    Author     : tran Hoang Phuc
+*/
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f2f2f2;
+}
+
+#login-form-wrap {
+    width: 300px;
+    margin: 100px auto;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+#login-form h2 {
+    text-align: center;
+    color: #333;
+}
+
+#login-form input[type="text"],
+#login-form input[type="password"] {
+    width: 95%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 16px;
+}
+
+#login-form input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+#login-form label {
+    font-size: 14px;
+}
+
+#login {
+    background-color: #F27024;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 16px;
+    width: 100%;
+}
+
+#login:hover {
+    opacity: 0.9;
+}
+
+#campus {
+    padding: 5px 0px;
+    border-radius: 3px;
+    background-color: #F27024;
+    color: white;
+}
+
+.campus-name {
+    background-color: white;
+    color: black;        
+}

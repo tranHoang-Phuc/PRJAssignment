@@ -7,4 +7,5 @@ D:\FPT\Semester4-FPTU\AssignmentPRJ\attendance-system\src\main\java\com\thphuc\s
 D:\FPT\Semester4-FPTU\AssignmentPRJ\attendance-system\src\main\java\com\thphuc\system\util\Sha1Util.java
 D:\FPT\Semester4-FPTU\AssignmentPRJ\attendance-system\src\main\java\com\thphuc\system\model\Campus.java
 D:\FPT\Semester4-FPTU\AssignmentPRJ\attendance-system\src\main\java\com\thphuc\system\model\Student.java
+D:\FPT\Semester4-FPTU\AssignmentPRJ\attendance-system\src\main\java\com\thphuc\system\dal\CampusDAO.java
 D:\FPT\Semester4-FPTU\AssignmentPRJ\attendance-system\src\main\java\com\thphuc\system\util\JpaUtil.java
