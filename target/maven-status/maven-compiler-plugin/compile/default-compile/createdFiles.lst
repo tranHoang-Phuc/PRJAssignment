@@ -1,6 +1,0 @@
-com\thphuc\system\controller\authentication\LoginController.class
-com\thphuc\system\resource\StudentResource.class
-com\thphuc\system\util\JpaUtil.class
-com\thphuc\system\util\Sha1Util.class
-com\thphuc\system\util\SessionUtil.class
-com\thphuc\system\config\AttendanceManagementSystem.class
