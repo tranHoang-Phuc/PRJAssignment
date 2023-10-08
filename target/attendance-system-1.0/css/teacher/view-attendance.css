@@ -1,0 +1,67 @@
+
+#header {
+    width: 90%;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 50px
+}
+
+.nav {
+    padding: 7px 5px;
+    border-radius: 3px;
+    border: none;
+    background-color: #f5f5f5;
+}
+
+a {
+    margin-left: 15px;
+    color: blue;
+    text-decoration: none;
+}
+
+a:hover {
+    opacity: 0.9;
+    text-decoration: underline;
+}
+
+#title {
+    height: 100px;
+    justify-content: center;
+}
+
+#title span {
+    line-height: 100px
+}
+
+.wrap {
+    margin-top: 50px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    width: fit-content;
+    padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 10px;
+    border-radius: 7px;
+}
+
+.element-semester,
+.element-course,
+.element-group {
+    padding: 10px;
+    background-color: #0e79d7;
+    margin-left: 10px;
+    color: white;
+    border-radius: 10px;
+}
+
+.choice {
+    margin-top: 20px;
+}
+
+.element-semester.selected,
+.element-course.selected,
+.element-group.selected {
+    background-color: orange;
+}
+button {
+    border: none;
+}

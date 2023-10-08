@@ -3,9 +3,14 @@
 }
 
 tr td {
-   width: 170px;
+width: 170px;
    position: relative;
+   border-color: inherit;
+   border-style: solid;
+   border-width: 2px;
 }
+
+
 
 .activities {
    background-color: #E5E5E5;
@@ -87,12 +92,9 @@ table {
    border-color: #6769ac;
 }
 
-table,
-th,
-td {
-   border-top: 3px solid #6769ac;
-   border-bottom: 3px solid #6769ac;
-   border-right: 3px solid #6769ac;
+
+ table, th, td {
+   border: 3px solid #6769ac;
 }
 
 #option-box {
@@ -133,9 +135,13 @@ td {
 .search-box .campus-name {
    margin-bottom: 10px;
    margin-left: 50%;
-   transform: translateX(-50%);
+   transform: translateX(-49%);
 }
 
 .search-box #search-bar {
    width: 250px;
+}
+
+.search-box button   {
+   margin-left: 10px;
 }
