@@ -1,8 +1,4 @@
-<%--
-    Document   : schedule
-    Created on : Sep 30, 2023, 10:34:25 AM
-    Author     : tran Hoang Phuc
---%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -13,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FPT University Academic Portal</title>
-    <link rel="stylesheet" href="../../css/teacher/schedule.css"/>
+    <link rel="stylesheet" href="../../css/student/schedule.css"/>
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"/>
 
