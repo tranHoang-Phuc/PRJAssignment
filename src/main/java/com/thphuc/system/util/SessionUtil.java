@@ -13,7 +13,7 @@ import jakarta.servlet.http.HttpServletRequest;
 public class SessionUtil {
     private static SessionUtil sessionUtil = null;
     
-    public SessionUtil getInstance() {
+    public static SessionUtil getInstance() {
         if (sessionUtil != null) {
             sessionUtil = new SessionUtil();
         } 

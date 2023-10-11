@@ -40,4 +40,8 @@ public class Account {
     @ManyToOne
     @JoinColumn(name = "role-id")
     private Role role;
+
+    @ManyToOne
+    @JoinColumn(name ="cid")
+    private Campus campus;
 }

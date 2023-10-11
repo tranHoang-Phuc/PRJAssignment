@@ -108,8 +108,7 @@
         </tr>&nbsp;
     </table>
 </div>
-
-<jsp:include page="../root/footer.jsp"/>
 <script src="../../js/teacher/schedule.js"></script>
+<jsp:include page="../root/footer.jsp"/>
 </body>
 </html>

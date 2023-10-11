@@ -18,7 +18,7 @@
 <body>
 <div id="login-form-wrap">
     <h2>Sign in</h2>
-    <form id="login-form" action="#" method="POST">
+    <form id="login-form" action="login" method="POST">
         <p>
             <input type="text" id="username" name="username" placeholder="Username" required>
 

@@ -71,10 +71,11 @@ function showLession() {
    var lessonArray = JSON.parse(jsonString);
    var days = document.querySelectorAll('.day');
    var year = document.querySelector('#year').value;
-   console.log(year);
    days.forEach(day => {
       var dateCalender = day.textContent + '/' + year;
+
       var dateAfterConverted = changeDateFormat(dateCalender);
+
       lessonArray.forEach(lesson => {
          var lessonID = lesson["lesson-id"];
          var group = lesson["group"];
@@ -86,24 +87,26 @@ function showLession() {
          var attendStatus = lesson["attend-status"];
          var date = new Date(lesson["date"]);
          var timeSlot = lesson["time-slot"]
-         if (dateAfterConverted == lesson["date"]) {
+
+         if (true) {
             var dayOfWeek = date.getDay();
             switch (dayOfWeek) {
                case 0:
                   var add = '#slot' + `${slotID}` + ' .sun';
                   var lessonSlot = document.querySelector(`${add}`);
+
                   if (attendStatus == 'true') {
                      console.log('haha')
                   }
                   lessonSlot.innerHTML = ` <div class="lesson" onclick="showLessonDetail(${lessonID})">
-                                                <span class="group">${group}</span><br><span class="course">- ${course}</span>
-                                                <span class="room">${room}</span><br><br>
-                                                <span class="material-symbols-outlined" id="clock">
-                                                schedule
-                                                </span>
-                                                <span class="time">${timeSlot}</span>
-                                                <span class="${status}"></span>
-                                                </div>`;
+                                                   <span class="group">${group}</span><br><span class="course">${course}</span>
+                                                   <span class="room">${room}</span><br><br>
+                                                   <span class="material-symbols-outlined" id="clock">
+                                                   schedule
+                                                   </span>
+                                                   <span class="time">${timeSlot}</span>
+                                                   <span class="${status}"></span>
+                                                   </div>`;
                   break;
                case 1:
                   var add = '#slot' + `${slotID}` + ' .mon';
@@ -115,14 +118,14 @@ function showLession() {
                      status = 'bubble-absent';
                   }
                   lessonSlot.innerHTML = ` <div class="lesson" onclick="showLessonDetail(${lessonID})">
-                                                <span class="group">${group}</span><br><span class="course">- ${course}</span>
-                                                <span class="room">${room}</span><br><br>
-                                                <span class="material-symbols-outlined" id="clock">
-                                                schedule
-                                                </span>
-                                                <span class="time">${timeSlot}</span>
-                                                <span class="${status}"></span>
-                                                </div>`;
+                                                   <span class="group">${group}</span><br><span class="course">${course}</span>
+                                                   <span class="room">${room}</span><br><br>
+                                                   <span class="material-symbols-outlined" id="clock">
+                                                   schedule
+                                                   </span>
+                                                   <span class="time">${timeSlot}</span>
+                                                   <span class="${status}"></span>
+                                                   </div>`;
                   break;
                case 2:
                   var add = '#slot' + `${slotID}` + ' .tue';
@@ -134,14 +137,14 @@ function showLession() {
                      status = 'bubble-absent';
                   }
                   lessonSlot.innerHTML = ` <div class="lesson" onclick="showLessonDetail(${lessonID})">
-                                                <span class="group">${group}</span><br><span class="course">- ${course}</span>
-                                                <span class="room">${room}</span><br><br>
-                                                <span class="material-symbols-outlined" id="clock">
-                                                schedule
-                                                </span>
-                                                <span class="time">${timeSlot}</span>
-                                                <span class="${status}"></span>
-                                                </div>`;
+                                                   <span class="group">${group}</span><br><span class="course">${course}</span>
+                                                   <span class="room">${room}</span><br><br>
+                                                   <span class="material-symbols-outlined" id="clock">
+                                                   schedule
+                                                   </span>
+                                                   <span class="time">${timeSlot}</span>
+                                                   <span class="${status}"></span>
+                                                   </div>`;
                   break;
                case 3:
                   var add = '#slot' + `${slotID}` + ' .wed';
@@ -153,14 +156,14 @@ function showLession() {
                      status = 'bubble-absent';
                   }
                   lessonSlot.innerHTML = ` <div class="lesson" onclick="showLessonDetail(${lessonID})">
-                                                <span class="group">${group}</span><br><span class="course">- ${course}</span>
-                                                <span class="room">${room}</span><br><br>
-                                                <span class="material-symbols-outlined" id="clock">
-                                                schedule
-                                                </span>
-                                                <span class="time">${timeSlot}</span>
-                                                <span class="${status}"></span>
-                                                </div>`;
+                                                   <span class="group">${group}</span><br><span class="course">${course}</span>
+                                                   <span class="room">${room}</span><br><br>
+                                                   <span class="material-symbols-outlined" id="clock">
+                                                   schedule
+                                                   </span>
+                                                   <span class="time">${timeSlot}</span>
+                                                   <span class="${status}"></span>
+                                                   </div>`;
                   break;
                case 4:
                   var add = '#slot' + `${slotID}` + ' .thu';
@@ -172,14 +175,14 @@ function showLession() {
                      status = 'bubble-absent';
                   }
                   lessonSlot.innerHTML = ` <div class="lesson" onclick="showLessonDetail(${lessonID})">
-                                                <span class="group">${group}</span><br><span class="course">- ${course}</span>
-                                                <span class="room">${room}</span><br><br>
-                                                <span class="material-symbols-outlined" id="clock">
-                                                schedule
-                                                </span>
-                                                <span class="time">${timeSlot}</span>
-                                                <span class="${status}"></span>
-                                                </div>`;
+                                                   <span class="group">${group}</span><br><span class="course">${course}</span>
+                                                   <span class="room">${room}</span><br><br>
+                                                   <span class="material-symbols-outlined" id="clock">
+                                                   schedule
+                                                   </span>
+                                                   <span class="time">${timeSlot}</span>
+                                                   <span class="${status}"></span>
+                                                   </div>`;
                   break;
                case 5:
                   var add = '#slot' + `${slotID}` + ' .fri';
@@ -190,15 +193,15 @@ function showLession() {
                   } else {
                      status = 'bubble-absent';
                   }
-                  lessonSlot.innerHTML = ` <div class="lesson" onclick="showLessonDetail(${lessonID})">
-                                                <span class="group">${group}</span><br><span class="course">- ${course}</span>
-                                                <span class="room">${room}</span><br><br>
-                                                <span class="material-symbols-outlined" id="clock">
-                                                schedule
-                                                </span>
-                                                <span class="time">${timeSlot}</span>
-                                                <span class="${status}"></span>
-                                                </div>`;
+                  lessonSlot.innerHTML = `<div class="lesson" onclick="showLessonDetail(${lessonID})">
+                                                   <span class="group">${group}</span><br><span class="course">${course}</span>
+                                                   <span class="room">${room}</span><br><br>
+                                                   <span class="material-symbols-outlined" id="clock">
+                                                   schedule
+                                                   </span>
+                                                   <span class="time">${timeSlot}</span>
+                                                   <span class="${status}"></span>
+                                                   </div>`;
                   break;
                case 6:
                   var add = '#slot' + `${slotID}` + ' .sat';
@@ -210,14 +213,14 @@ function showLession() {
                      status = 'bubble-absent';
                   }
                   lessonSlot.innerHTML = ` <div class="lesson" onclick="showLessonDetail(${lessonID})">
-                                                <span class="group">${group}</span><br><span class="course">- ${course}</span>
-                                                <span class="room">${room}</span><br><br>
-                                                <span class="material-symbols-outlined" id="clock">
-                                                schedule
-                                                </span>
-                                                <span class="time">${timeSlot}</span>
-                                                <span class="${status}"></span>
-                                                </div>`;
+                                                   <span class="group">${group}</span><br><span class="course">${course}</span>
+                                                   <span class="room">${room}</span><br><br>
+                                                   <span class="material-symbols-outlined" id="clock">
+                                                   schedule
+                                                   </span>
+                                                   <span class="time">${timeSlot}</span>
+                                                   <span class="${status}"></span>
+                                                   </div>`;
                   break;
             }
          }

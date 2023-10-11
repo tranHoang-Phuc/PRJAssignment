@@ -7,7 +7,7 @@ import jakarta.persistence.TypedQuery;
 
 import java.util.List;
 
-public class CampusRepository implements ICampusRepository {
+public class CampusRepository implements IRepository<Campus> {
     @Override
     public List<Campus> getAll() {
         EntityManager em = JpaUtil.getEntityManager();
@@ -55,4 +55,5 @@ public class CampusRepository implements ICampusRepository {
         em.getTransaction().commit();
         em.close();
     }
+
 }

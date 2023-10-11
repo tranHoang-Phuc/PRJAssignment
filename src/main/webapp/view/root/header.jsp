@@ -40,7 +40,7 @@
                 height: 100px;
                 justify-content: center;
             }
-            
+
             #title span {
                 line-height: 100px
             }
@@ -54,7 +54,7 @@
                 </h1>
             </div>
             <div class="nav">
-                <a href="#">Home</a> &nbsp;|&nbsp; <b>${requestScope.title}</b> 
+                <a href="#">Home</a> &nbsp;|&nbsp; <b>${requestScope.title}</b>
                 <!-- Dùng servlet để trả về thẻ b-->
             </div>
         </div>

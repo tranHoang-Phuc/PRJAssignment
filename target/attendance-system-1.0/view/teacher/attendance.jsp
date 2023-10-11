@@ -45,7 +45,6 @@
                 <span><button type="submit" class="btn btn-primary">Save</button></span>
                 <span><button type="button" class="btn btn-outline-primary" onclick="attendanceClear()">Clear</button></span>
             </div>
-
         </form>
     </div>
 </div>
