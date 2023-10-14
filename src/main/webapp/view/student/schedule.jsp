@@ -98,7 +98,6 @@
     </table>
 </div>
 
-<jsp:include page="../root/footer.jsp"/>
-<script src="../../js/student/schedule.js"></script>
+ <script src="../../js/student/schedule.js"></script>
 </body>
 </html>

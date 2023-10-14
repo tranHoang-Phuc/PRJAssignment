@@ -1,0 +1,98 @@
+package com.thphuc.system.repository.campus;
+
+import com.thphuc.system.model.Group;
+import com.thphuc.system.model.Lesson;
+import com.thphuc.system.model.Student;
+import com.thphuc.system.util.DateUtil;
+import com.thphuc.system.util.JpaUtil;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
+
+import java.sql.Date;
+import java.util.List;
+
+public class LessonRepository implements IRepository<Lesson> {
+    @Override
+    public List<Lesson> getAll() {
+        EntityManager em = JpaUtil.getEntityManager();
+        String jpql = "SELECT l FROM Lesson l";
+        List<Lesson> list = em.createQuery(jpql, Lesson.class).getResultList();
+        em.close();
+        return list;
+    }
+
+    @Override
+    public Lesson get(int id) {
+        EntityManager em = JpaUtil.getEntityManager();
+        Lesson lesson = em.find(Lesson.class, id);
+        em.close();
+        return lesson;
+    }
+
+    @Override
+    public void insert(Lesson lesson) {
+        EntityManager em = JpaUtil.getEntityManager();
+        em.getTransaction().begin();
+        em.persist(lesson);
+        em.getTransaction().commit();
+        em.close();
+    }
+
+    @Override
+    public void update(Lesson lesson) {
+        EntityManager em = JpaUtil.getEntityManager();
+        em.getTransaction().begin();
+        em.merge(lesson);
+        em.getTransaction().commit();
+        em.close();
+    }
+
+    @Override
+    public void delete(int id) {
+        EntityManager em = JpaUtil.getEntityManager();
+        em.getTransaction().begin();
+        Lesson lesson = em.find(Lesson.class, id);
+        if (lesson != null) {
+            em.remove(lesson);
+        }
+        em.getTransaction().commit();
+        em.close();
+    }
+
+    public List<Lesson> getWeeklyTimeTable(Student student) {
+        EntityManager em = JpaUtil.getEntityManager();
+        try {
+            Date monday = DateUtil.getMondayOfCurrentWeek();
+            Date sunday = DateUtil.getSundayOfCurrentWeek();
+            String jpql = "SELECT l FROM Lesson l JOIN l.group g JOIN g.students s " +
+                    "WHERE s.sid = :sid AND l.date BETWEEN :startDate AND :endDate";
+            TypedQuery<Lesson> query = em.createQuery(jpql, Lesson.class);
+            query.setParameter("sid", student.getSid());
+            query.setParameter("startDate", monday);
+            query.setParameter("endDate", sunday);
+            List<Lesson> list = query.getResultList();
+            return list;
+        } finally {
+            em.close();
+        }
+    }
+
+
+
+
+    public List<Lesson> getWeeklyTimeTalbe(Date monday, Date sunday, Student student) {
+        EntityManager em = JpaUtil.getEntityManager();
+        try {
+            String jpql = "SELECT l FROM Lesson l JOIN l.group g JOIN g.students s " +
+                    "WHERE s.sid = :sid AND l.date BETWEEN :startDate AND :endDate";
+            TypedQuery<Lesson> query = em.createQuery(jpql, Lesson.class);
+            query.setParameter("sid", student.getSid());
+            query.setParameter("startDate", monday);
+            query.setParameter("endDate", sunday);
+            List<Lesson> list = query.getResultList();
+            return list;
+        } finally {
+            em.close();
+        }
+    }
+}

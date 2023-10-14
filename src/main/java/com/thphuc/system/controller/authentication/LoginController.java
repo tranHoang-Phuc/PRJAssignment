@@ -46,15 +46,7 @@ public class LoginController extends HttpServlet {
         if (accountDTO != null) {
             SessionUtil.getInstance().putValue(req, "account", accountDTO);
             if (remember != null) {
-                Cookie cookieUsername = new Cookie("username", username);
-                Cookie cookiePassword = new Cookie("password", password);
-                Cookie cookieCampus = new Cookie("campus", campus);
-                cookieUsername.setMaxAge(60 * 60 * 24);
-                cookiePassword.setMaxAge(60 * 60 * 24);
-                cookieCampus.setMaxAge(60 * 60 * 24);
-                resp.addCookie(cookieUsername);
-                resp.addCookie(cookiePassword);
-                resp.addCookie(cookieCampus);
+                loginService.addToCookie(username, password, campus, resp);
             }
             resp.sendRedirect(req.getContextPath() + "/home");
         } else {

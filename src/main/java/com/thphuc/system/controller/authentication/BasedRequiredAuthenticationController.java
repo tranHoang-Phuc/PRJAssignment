@@ -24,7 +24,7 @@ public abstract class BasedRequiredAuthenticationController extends HttpServlet 
             Cookie[] cookies = request.getCookies();
             if (cookies != null) {
                 for (Cookie cookie : cookies) {
-                    if (username != null && password != null) {
+                    if (username != null && password != null && campus != null) {
                         break;
                     }
                     if ("username".equals(cookie.getName())) {

@@ -35,4 +35,18 @@ public class LoginService {
         accountDTO.setCampus(account.getCampus());
         return accountDTO;
     }
+
+    public void addToCookie(String username, String password, String campus, HttpServletResponse resp) {
+        Cookie cookieUsername = new Cookie("username", username);
+        Cookie cookiePassword = new Cookie("password", password);
+        Cookie cookieCampus = new Cookie("campus", campus);
+        cookieUsername.setMaxAge(60 * 60 * 24);
+        cookiePassword.setMaxAge(60 * 60 * 24);
+        cookieCampus.setMaxAge(60 * 60 * 24);
+        resp.addCookie(cookieUsername);
+        resp.addCookie(cookiePassword);
+        resp.addCookie(cookieCampus);
+    }
+
+
 }

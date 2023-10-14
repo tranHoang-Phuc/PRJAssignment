@@ -32,13 +32,18 @@ public class Lesson {
     @JoinColumn(name = "instructor-id")
     private Instructor instructor;
     @ManyToOne
-    @JoinColumn(name = "room-id")
+    @JoinColumn (name = "room-id")
     private Room room;
+    @Column(name = "session-no")
     private Integer sessionNo;
+
     @ManyToOne
     @JoinColumn(name = "slot-id")
     private TimeSlot timeSlot;
+
+    @Column(name = "attendance-status")
     private Boolean attendanceStatus;
+    @Column(name = "date")
     private Date date;
 
 }

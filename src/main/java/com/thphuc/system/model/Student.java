@@ -4,21 +4,15 @@
  */
 package com.thphuc.system.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Column;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.sql.Date;
+
+import java.util.Set;
 
 /**
  * @author tran Hoang Phuc
@@ -56,4 +50,7 @@ public class Student {
     @OneToOne
     @JoinColumn(name = "account-id")
     private Account account;
+
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "students")
+    private Set<Group> groups;
 }
