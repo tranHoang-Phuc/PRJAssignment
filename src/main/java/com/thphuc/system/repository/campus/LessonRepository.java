@@ -1,6 +1,7 @@
 package com.thphuc.system.repository.campus;
 
 import com.thphuc.system.model.Group;
+import com.thphuc.system.model.Instructor;
 import com.thphuc.system.model.Lesson;
 import com.thphuc.system.model.Student;
 import com.thphuc.system.util.DateUtil;
@@ -59,15 +60,15 @@ public class LessonRepository implements IRepository<Lesson> {
         em.close();
     }
 
-    public List<Lesson> getWeeklyTimeTable(Student student) {
+    public List<Lesson> getWeeklyTimeTable(Instructor instructor) {
         EntityManager em = JpaUtil.getEntityManager();
         try {
             Date monday = DateUtil.getMondayOfCurrentWeek();
             Date sunday = DateUtil.getSundayOfCurrentWeek();
-            String jpql = "SELECT l FROM Lesson l JOIN l.group g JOIN g.students s " +
-                    "WHERE s.sid = :sid AND l.date BETWEEN :startDate AND :endDate";
+            String jpql = "SELECT l FROM Lesson l JOIN l.group g  " +
+                    "WHERE l.instructor.iCode = :instructorid AND l.date >= :startDate AND l.date <= :endDate";
             TypedQuery<Lesson> query = em.createQuery(jpql, Lesson.class);
-            query.setParameter("sid", student.getSid());
+            query.setParameter("instructorid", instructor.getICode());
             query.setParameter("startDate", monday);
             query.setParameter("endDate", sunday);
             List<Lesson> list = query.getResultList();
@@ -80,13 +81,15 @@ public class LessonRepository implements IRepository<Lesson> {
 
 
 
-    public List<Lesson> getWeeklyTimeTalbe(Date monday, Date sunday, Student student) {
+
+
+    public List<Lesson> getWeeklyTimeTalbe(Date monday, Date sunday, Instructor instructor) {
         EntityManager em = JpaUtil.getEntityManager();
         try {
-            String jpql = "SELECT l FROM Lesson l JOIN l.group g JOIN g.students s " +
-                    "WHERE s.sid = :sid AND l.date BETWEEN :startDate AND :endDate";
+            String jpql = "SELECT l FROM Lesson l JOIN l.group g  " +
+                    "WHERE l.instructor.iCode = :instructorid AND l.date >= :startDate AND l.date <= :endDate";
             TypedQuery<Lesson> query = em.createQuery(jpql, Lesson.class);
-            query.setParameter("sid", student.getSid());
+            query.setParameter("instructorid", instructor.getICode());
             query.setParameter("startDate", monday);
             query.setParameter("endDate", sunday);
             List<Lesson> list = query.getResultList();
@@ -95,4 +98,6 @@ public class LessonRepository implements IRepository<Lesson> {
             em.close();
         }
     }
+
+
 }

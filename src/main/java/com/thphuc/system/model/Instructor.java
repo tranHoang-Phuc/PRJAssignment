@@ -45,9 +45,7 @@ public class Instructor {
     private String email;
     @Column(name = "img")
     private String img;
-    @ManyToOne
-    @JoinColumn(name = "cid")
-    private Campus campus;
+
     @OneToOne
     @JoinColumn(name = "account-id")
     private Account account;

@@ -1,23 +1,27 @@
 package com.thphuc.system.util;
 
 import java.sql.Date;
+
 import java.util.Calendar;
+
 
 public class DateUtil {
 
     public static Date getMondayOfCurrentWeek() {
         Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
-        java.util.Date date = calendar.getTime();
-        return new Date(date.getTime());
+        java.util.Date currentDate = calendar.getTime();
+        calendar.setTime(currentDate);
+        calendar.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
+        calendar.add(Calendar.DATE, -6);
+        java.sql.Date sqlDate = new java.sql.Date(calendar.getTime().getTime());
+    return sqlDate;
     }
 
+
+
     public static Date getSundayOfCurrentWeek() {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(new Date(System.currentTimeMillis()));
-        calendar.add(Calendar.DATE, 2);
-        java.util.Date date = calendar.getTime();
-        return new Date(date.getTime());
+        Date sundayDate = Date.valueOf(getMondayOfCurrentWeek().toLocalDate().plusDays(6));
+        return sundayDate;
     }
 
     public static Date findSunday(Date date) {
@@ -30,6 +34,5 @@ public class DateUtil {
         return sundayDate;
     }
 
-    public static void main(String[] args) {
-    }
+
 }

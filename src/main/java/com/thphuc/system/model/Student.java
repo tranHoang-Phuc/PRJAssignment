@@ -12,6 +12,7 @@ import lombok.Setter;
 
 import java.sql.Date;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -44,9 +45,7 @@ public class Student {
     private String email;
     @Column(name = "img")
     private String img;
-    @ManyToOne
-    @JoinColumn(name = "cid")
-    private Campus campus;
+
     @OneToOne
     @JoinColumn(name = "account-id")
     private Account account;

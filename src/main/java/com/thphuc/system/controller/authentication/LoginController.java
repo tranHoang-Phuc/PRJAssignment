@@ -50,6 +50,10 @@ public class LoginController extends HttpServlet {
             }
             resp.sendRedirect(req.getContextPath() + "/home");
         } else {
+            CampusRepository repository = new CampusRepository();
+            CampusService campusService = new CampusService(repository);
+            List<CampusDTO> list = campusService.getAll();
+            req.setAttribute("list", list);
             req.setAttribute("message", "Username or password is incorrect");
             req.getRequestDispatcher("view/authentication/login.jsp").forward(req, resp);
         }

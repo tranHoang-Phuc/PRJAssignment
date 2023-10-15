@@ -140,8 +140,14 @@ table {
 
 .search-box #search-bar {
    width: 250px;
+   margin-left:170px
 }
 
 .search-box button   {
    margin-left: 10px;
+}
+
+.schedule {
+   width: fit-content;
+   margin-left: 200px;
 }

@@ -66,168 +66,186 @@ generateWeekOptions(parseInt(selectYear.value));
 updateDays(parseInt(selectYear.value), parseInt(selectWeek.value));
 showLession()
 
-function showLession() {
-   var jsonString = '[{"lesson-id": "1","group": "SE1763","instructor": "sonnt5","course": "PRJ301","room": "BE-202","session-no": "1","slot-id": "4","attend-status": "true","date": "2023-10-02","time-slot": "15:20 - 17:40"}, {"lesson-id": "2","group": "IA1708","instructor": "dungltk","course": "JPD123","room": "BE-410","session-no": "1","slot-id": "1","attend-status": "true","date": "2023-10-03", "time-slot": "7:30 - 9:50"}, {"lesson-id": "3","group": "AI1805","instructor": "chungttk","course": "MAS291","room": "BE-310","session-no": "1","slot-id": "2","attend-status": "true","date": "2023-10-03", "time-slot": "10:00 - 12:20"}, {"lesson-id": "4", "group": "SE1763", "instructor": "sonnt5", "course": "PRJ301", "room": "BE-119", "session-no": "2", "slot-id": "3", "attend-status": "false", "date": "2023-10-04", "time-slot": "12:50 - 15:10"}, {"lesson-id": "5","group": "IA1708","instructor": "dungltk", "course": "JPD123","room": "BE-101","session-no": "2","slot-id": "2","attend-status": "false","date": "2023-10-05","time-slot": "10:00 - 12:50"}, {"lesson-id": "5","group": "AI1805","instructor": "chungttk","course": "MAS291","room": "BE-308","session-no": "2","slot-id": "1","attend-status": "false","date": "2023-10-06","time-slot": "7:00 - 9:50"}]';
-   var lessonArray = JSON.parse(jsonString);
-   var days = document.querySelectorAll('.day');
-   var year = document.querySelector('#year').value;
-   days.forEach(day => {
-      var dateCalender = day.textContent + '/' + year;
+function convertTime(time) {
+   var parts = time.split(" - ");
 
-      var dateAfterConverted = changeDateFormat(dateCalender);
-
-      lessonArray.forEach(lesson => {
-         var lessonID = lesson["lesson-id"];
-         var group = lesson["group"];
-         var instructor = lesson["instructor"];
-         var course = lesson["course"];
-         var room = lesson["room"];
-         var sessionNo = lesson["session-no"];
-         var slotID = lesson["slot-id"];
-         var attendStatus = lesson["attend-status"];
-         var date = new Date(lesson["date"]);
-         var timeSlot = lesson["time-slot"]
-
-         if (true) {
-            var dayOfWeek = date.getDay();
-            switch (dayOfWeek) {
-               case 0:
-                  var add = '#slot' + `${slotID}` + ' .sun';
-                  var lessonSlot = document.querySelector(`${add}`);
-
-                  if (attendStatus == 'true') {
-                     console.log('haha')
-                  }
-                  lessonSlot.innerHTML = ` <div class="lesson" onclick="showLessonDetail(${lessonID})">
-                                                   <span class="group">${group}</span><br><span class="course">${course}</span>
-                                                   <span class="room">${room}</span><br><br>
-                                                   <span class="material-symbols-outlined" id="clock">
-                                                   schedule
-                                                   </span>
-                                                   <span class="time">${timeSlot}</span>
-                                                   <span class="${status}"></span>
-                                                   </div>`;
-                  break;
-               case 1:
-                  var add = '#slot' + `${slotID}` + ' .mon';
-                  var lessonSlot = document.querySelector(`${add}`)
-                  var status = '';
-                  if (attendStatus == 'true') {
-                     status = 'bubble-present';
-                  } else {
-                     status = 'bubble-absent';
-                  }
-                  lessonSlot.innerHTML = ` <div class="lesson" onclick="showLessonDetail(${lessonID})">
-                                                   <span class="group">${group}</span><br><span class="course">${course}</span>
-                                                   <span class="room">${room}</span><br><br>
-                                                   <span class="material-symbols-outlined" id="clock">
-                                                   schedule
-                                                   </span>
-                                                   <span class="time">${timeSlot}</span>
-                                                   <span class="${status}"></span>
-                                                   </div>`;
-                  break;
-               case 2:
-                  var add = '#slot' + `${slotID}` + ' .tue';
-                  var lessonSlot = document.querySelector(`${add}`)
-                  var status = '';
-                  if (attendStatus == 'true') {
-                     status = 'bubble-present';
-                  } else {
-                     status = 'bubble-absent';
-                  }
-                  lessonSlot.innerHTML = ` <div class="lesson" onclick="showLessonDetail(${lessonID})">
-                                                   <span class="group">${group}</span><br><span class="course">${course}</span>
-                                                   <span class="room">${room}</span><br><br>
-                                                   <span class="material-symbols-outlined" id="clock">
-                                                   schedule
-                                                   </span>
-                                                   <span class="time">${timeSlot}</span>
-                                                   <span class="${status}"></span>
-                                                   </div>`;
-                  break;
-               case 3:
-                  var add = '#slot' + `${slotID}` + ' .wed';
-                  var lessonSlot = document.querySelector(`${add}`)
-                  var status = '';
-                  if (attendStatus == 'true') {
-                     status = 'bubble-present';
-                  } else {
-                     status = 'bubble-absent';
-                  }
-                  lessonSlot.innerHTML = ` <div class="lesson" onclick="showLessonDetail(${lessonID})">
-                                                   <span class="group">${group}</span><br><span class="course">${course}</span>
-                                                   <span class="room">${room}</span><br><br>
-                                                   <span class="material-symbols-outlined" id="clock">
-                                                   schedule
-                                                   </span>
-                                                   <span class="time">${timeSlot}</span>
-                                                   <span class="${status}"></span>
-                                                   </div>`;
-                  break;
-               case 4:
-                  var add = '#slot' + `${slotID}` + ' .thu';
-                  var lessonSlot = document.querySelector(`${add}`)
-                  var status = '';
-                  if (attendStatus == 'true') {
-                     status = 'bubble-present';
-                  } else {
-                     status = 'bubble-absent';
-                  }
-                  lessonSlot.innerHTML = ` <div class="lesson" onclick="showLessonDetail(${lessonID})">
-                                                   <span class="group">${group}</span><br><span class="course">${course}</span>
-                                                   <span class="room">${room}</span><br><br>
-                                                   <span class="material-symbols-outlined" id="clock">
-                                                   schedule
-                                                   </span>
-                                                   <span class="time">${timeSlot}</span>
-                                                   <span class="${status}"></span>
-                                                   </div>`;
-                  break;
-               case 5:
-                  var add = '#slot' + `${slotID}` + ' .fri';
-                  var lessonSlot = document.querySelector(`${add}`)
-                  var status = '';
-                  if (attendStatus == 'true') {
-                     status = 'bubble-present';
-                  } else {
-                     status = 'bubble-absent';
-                  }
-                  lessonSlot.innerHTML = `<div class="lesson" onclick="showLessonDetail(${lessonID})">
-                                                   <span class="group">${group}</span><br><span class="course">${course}</span>
-                                                   <span class="room">${room}</span><br><br>
-                                                   <span class="material-symbols-outlined" id="clock">
-                                                   schedule
-                                                   </span>
-                                                   <span class="time">${timeSlot}</span>
-                                                   <span class="${status}"></span>
-                                                   </div>`;
-                  break;
-               case 6:
-                  var add = '#slot' + `${slotID}` + ' .sat';
-                  var lessonSlot = document.querySelector(`${add}`)
-                  var status = '';
-                  if (attendStatus == 'true') {
-                     status = 'bubble-present';
-                  } else {
-                     status = 'bubble-absent';
-                  }
-                  lessonSlot.innerHTML = ` <div class="lesson" onclick="showLessonDetail(${lessonID})">
-                                                   <span class="group">${group}</span><br><span class="course">${course}</span>
-                                                   <span class="room">${room}</span><br><br>
-                                                   <span class="material-symbols-outlined" id="clock">
-                                                   schedule
-                                                   </span>
-                                                   <span class="time">${timeSlot}</span>
-                                                   <span class="${status}"></span>
-                                                   </div>`;
-                  break;
-            }
-         }
-      });
-   });
-
+   if (parts.length === 2) {
+      var startTime = parts[0];
+      var endTime = parts[1];
+      var formattedString = startTime.substring(0, 5) + " - " + endTime.substring(0, 5);
+      return formattedString;
+   }
 }
+
+function showLession() {
+   var url = 'http://localhost:8080/attendance_system_war/api/teacher/report/schedule-of-week/sonnt5';
+   fetch(url)
+       .then(response => response.json())
+       .then(data => {
+          var days = document.querySelectorAll('.day');
+          var year = document.querySelector('#year').value;
+          days.forEach(day => {
+             var dateCalender = day.textContent + '/' + year;
+             var dateAfterConverted = changeDateFormat(dateCalender);
+             data.forEach(dat => {
+                var lessonID = dat["lessonID"];
+                var groupName = dat["groupname"];
+                var courseName = dat["courseName"];
+                var roomName = dat["roomName"];
+                var timeSlot = dat["timeSlot"];
+                var date = dat["date"];
+                var timeLast = convertTime(dat["timeLast"]);
+                var attendanceStatus = dat["attendanceStatus"]
+                var dayOfWeek = new Date(date).getDay();
+                if (true) {
+                   switch (dayOfWeek) {
+                      case 0:
+                         var add = '#slot' + `${timeSlot}` + ' .sun';
+                         var lessonSlot = document.querySelector(`${add}`);
+                         var status = '';
+                         if (attendanceStatus == true) {
+                            status = 'bubble-present';
+                         } else {
+                            status = 'bubble-absent';
+                         }
+                         lessonSlot.innerHTML = ` <div class="lesson" onclick="showLessonDetail(${lessonID})">
+                                                         <span class="group">${groupName}</span><br><span class="course">${courseName}</span>
+                                                         <span class="room">${roomName}</span><br><br>
+                                                         <span class="material-symbols-outlined" id="clock">
+                                                         schedule
+                                                         </span>
+                                                         <span class="time">${timeLast}</span>
+                                                         <span class="${status}"></span>
+                                                         </div>`;
+                         break;
+
+                      case 1:
+                         var add = '#slot' + `${timeSlot}` + ' .mon';
+                         var lessonSlot = document.querySelector(`${add}`)
+                         var status = '';
+                         if (attendanceStatus == true) {
+                            status = 'bubble-present';
+                         } else {
+                            status = 'bubble-absent';
+                         }
+                         lessonSlot.innerHTML = ` <div class="lesson" onclick="showLessonDetail(${lessonID})">
+                                                   <span class="group">${groupName}</span><br><span class="course">${courseName}</span>
+                                                   <span class="room">${roomName}</span><br><br>
+                                                   <span class="material-symbols-outlined" id="clock">
+                                                   schedule
+                                                   </span>
+                                                   <span class="time">${timeLast}</span>
+                                                   <span class="${status}"></span>
+                                                   </div>`;
+                         break;
+
+                      case 2:
+                         var add = '#slot' + `${timeSlot}` + ' .tue';
+                         var lessonSlot = document.querySelector(`${add}`)
+                         var status = '';
+                         if (attendanceStatus == true) {
+                            status = 'bubble-present';
+                         } else {
+                            status = 'bubble-absent';
+                         }
+                         lessonSlot.innerHTML = ` <div class="lesson" onclick="showLessonDetail(${lessonID})">
+                                                            <span class="group">${groupName}</span><br><span class="course">${courseName}</span>
+                                                            <span class="room">${roomName}</span><br><br>
+                                                            <span class="material-symbols-outlined" id="clock">
+                                                            schedule
+                                                            </span>
+                                                            <span class="time">${timeLast}</span>
+                                                            <span class="${status}"></span>
+                                                            </div>`;
+                         break;
+
+                      case 3:
+                         var add = '#slot' + `${timeSlot}` + ' .wed';
+                         var lessonSlot = document.querySelector(`${add}`)
+                         var status = '';
+                         if (attendanceStatus == true) {
+                            status = 'bubble-present';
+                         } else {
+                            status = 'bubble-absent';
+                         }
+                         lessonSlot.innerHTML = ` <div class="lesson" onclick="showLessonDetail(${lessonID})">
+                                                   <span class="group">${groupName}</span><br><span class="course">${courseName}</span>
+                                                   <span class="room">${roomName}</span><br><br>
+                                                   <span class="material-symbols-outlined" id="clock">
+                                                   schedule
+                                                   </span>
+                                                   <span class="time">${timeLast}</span>
+                                                   <span class="${status}"></span>
+                                                   </div>`;
+                         break;
+
+                      case 4:
+                         var add = '#slot' + `${timeSlot}` + ' .thu';
+                         var lessonSlot = document.querySelector(`${add}`)
+                         var status = '';
+                         if (attendStatus == 'true') {
+                            status = 'bubble-present';
+                         } else {
+                            status = 'bubble-absent';
+                         }
+                         lessonSlot.innerHTML = ` <div class="lesson" onclick="showLessonDetail(${lessonID})">
+                                                   <span class="group">${groupName}</span><br><span class="course">${courseName}</span>
+                                                   <span class="room">${roomName}</span><br><br>
+                                                   <span class="material-symbols-outlined" id="clock">
+                                                   schedule
+                                                   </span>
+                                                   <span class="time">${timeLast}</span>
+                                                   <span class="${status}"></span>
+                                                   </div>`;
+                         break;
+                      case 5:
+                         var add = '#slot' + `${timeSlot}` + ' .fri';
+                         var lessonSlot = document.querySelector(`${add}`)
+                         var status = '';
+                         if (attendStatus == 'true') {
+                            status = 'bubble-present';
+                         } else {
+                            status = 'bubble-absent';
+                         }
+                         lessonSlot.innerHTML = `<div class="lesson" onclick="showLessonDetail(${lessonID})">
+                                                   <span class="group">${groupName}</span><br><span class="course">${courseName}</span>
+                                                   <span class="room">${roomName}</span><br><br>
+                                                   <span class="material-symbols-outlined" id="clock">
+                                                   schedule
+                                                   </span>
+                                                   <span class="time">${timeLast}</span>
+                                                   <span class="${status}"></span>
+                                                   </div>`;
+                         break;
+                      case 6:
+                         var add = '#slot' + `${timeSlot}` + ' .sat';
+                         var lessonSlot = document.querySelector(`${add}`)
+                         var status = '';
+                         if (attendStatus == 'true') {
+                            status = 'bubble-present';
+                         } else {
+                            status = 'bubble-absent';
+                         }
+                         lessonSlot.innerHTML = ` <div class="lesson" onclick="showLessonDetail(${lessonID})">
+                                                   <span class="group">${groupName}</span><br><span class="course">${courseName}</span>
+                                                   <span class="room">${roomName}</span><br><br>
+                                                   <span class="material-symbols-outlined" id="clock">
+                                                   schedule
+                                                   </span>
+                                                   <span class="time">${timeLast}</span>
+                                                   <span class="${status}"></span>
+                                                   </div>`;
+                         break;
+                   }
+                }
+             });
+          });
+       })
+       .catch(error => {
+          console.error('Lỗi: ', error);
+       });
+}
+
 
 function changeDateFormat(inputDate) {
    const dateParts = inputDate.split('/');
@@ -239,5 +257,208 @@ function changeDateFormat(inputDate) {
 }
 
 function showLessonDetail(lessonID) {
-   // window.location = "https://www.youtube.com/watch?v=QOQI3dJpYIg&list=RDWICNjzJK_cg&index=3";
+   window.location = "https://www.youtube.com/watch?v=QOQI3dJpYIg&list=RDWICNjzJK_cg&index=3";
+}
+updateTimeTable();
+
+function updateTimeTable() {
+   var slots = document.querySelectorAll('.slot');
+   slots.forEach(slot => {
+      slot.innerHTML = `<td class="mon">-</td>
+      <td class="tue">-</td>
+      <td class="wed">-</td>
+      <td class="thu">-</td>
+      <td class="fri">-</td>
+      <td class="sat">-</td>
+      <td class="sun">-</td>`;
+   });
+   var dateAfterChange = document.querySelector('#week');
+   var yearAterChange = document.querySelector('#year');
+   var monday = getMonday(dateAfterChange.value, yearAterChange.value);
+   console.log(monday)
+   showLessionAterChange(monday)
+}
+
+function getMonday(n, x) {
+   const firstDayOfYear = new Date(x, 0, 1);
+   const firstWeekDay = firstDayOfYear.getDay();
+   const daysToAdd = (n - 1) * 7 - firstWeekDay + 1;
+   const mondayOfWeekN = new Date(x, 0, daysToAdd + 1);
+
+   // Chuyển đổi ngày thành chuỗi theo định dạng 'yyyy-mm-dd'
+   const year = mondayOfWeekN.getFullYear();
+   const month = String(mondayOfWeekN.getMonth() + 1).padStart(2, '0');
+   const day = String(mondayOfWeekN.getDate()).padStart(2, '0');
+   const formattedDate = `${year}-${month}-${day}`;
+
+   return formattedDate;
+}
+
+function showLessionAterChange(date) {
+   var url = 'http://localhost:8080/attendance_system_war/api/teacher/report/schedule-of-week/sonnt5/' + `${date}`;
+   fetch(url)
+       .then(response => response.json())
+       .then(data => {
+          var days = document.querySelectorAll('.day');
+          var year = document.querySelector('#year').value;
+          days.forEach(day => {
+             var dateCalender = day.textContent + '/' + year;
+             var dateAfterConverted = changeDateFormat(dateCalender);
+             data.forEach(dat => {
+                var lessonID = dat["lessonID"];
+                var groupName = dat["groupname"];
+                var courseName = dat["courseName"];
+                var roomName = dat["roomName"];
+                var timeSlot = dat["timeSlot"];
+                var date = dat["date"];
+                var timeLast = convertTime(dat["timeLast"]);
+                var attendanceStatus = dat["attendanceStatus"]
+                var dayOfWeek = new Date(date).getDay();
+                if (true) {
+                   switch (dayOfWeek) {
+                      case 0:
+                         var add = '#slot' + `${timeSlot}` + ' .sun';
+                         var lessonSlot = document.querySelector(`${add}`);
+                         var status = '';
+                         if (attendanceStatus == true) {
+                            status = 'bubble-present';
+                         } else {
+                            status = 'bubble-absent';
+                         }
+                         lessonSlot.innerHTML = ` <div class="lesson" onclick="showLessonDetail(${lessonID})">
+                                                         <span class="group">${groupName}</span><br><span class="course">${courseName}</span>
+                                                         <span class="room">${roomName}</span><br><br>
+                                                         <span class="material-symbols-outlined" id="clock">
+                                                         schedule
+                                                         </span>
+                                                         <span class="time">${timeLast}</span>
+                                                         <span class="${status}"></span>
+                                                         </div>`;
+                         break;
+
+                      case 1:
+                         var add = '#slot' + `${timeSlot}` + ' .mon';
+                         var lessonSlot = document.querySelector(`${add}`)
+                         var status = '';
+                         if (attendanceStatus == true) {
+                            status = 'bubble-present';
+                         } else {
+                            status = 'bubble-absent';
+                         }
+                         lessonSlot.innerHTML = ` <div class="lesson" onclick="showLessonDetail(${lessonID})">
+                                                   <span class="group">${groupName}</span><br><span class="course">${courseName}</span>
+                                                   <span class="room">${roomName}</span><br><br>
+                                                   <span class="material-symbols-outlined" id="clock">
+                                                   schedule
+                                                   </span>
+                                                   <span class="time">${timeLast}</span>
+                                                   <span class="${status}"></span>
+                                                   </div>`;
+                         break;
+
+                      case 2:
+                         var add = '#slot' + `${timeSlot}` + ' .tue';
+                         var lessonSlot = document.querySelector(`${add}`)
+                         var status = '';
+                         if (attendanceStatus == true) {
+                            status = 'bubble-present';
+                         } else {
+                            status = 'bubble-absent';
+                         }
+                         lessonSlot.innerHTML = ` <div class="lesson" onclick="showLessonDetail(${lessonID})">
+                                                            <span class="group">${groupName}</span><br><span class="course">${courseName}</span>
+                                                            <span class="room">${roomName}</span><br><br>
+                                                            <span class="material-symbols-outlined" id="clock">
+                                                            schedule
+                                                            </span>
+                                                            <span class="time">${timeLast}</span>
+                                                            <span class="${status}"></span>
+                                                            </div>`;
+                         break;
+
+                      case 3:
+                         var add = '#slot' + `${timeSlot}` + ' .wed';
+                         var lessonSlot = document.querySelector(`${add}`)
+                         var status = '';
+                         if (attendanceStatus == true) {
+                            status = 'bubble-present';
+                         } else {
+                            status = 'bubble-absent';
+                         }
+                         lessonSlot.innerHTML = ` <div class="lesson" onclick="showLessonDetail(${lessonID})">
+                                                   <span class="group">${groupName}</span><br><span class="course">${courseName}</span>
+                                                   <span class="room">${roomName}</span><br><br>
+                                                   <span class="material-symbols-outlined" id="clock">
+                                                   schedule
+                                                   </span>
+                                                   <span class="time">${timeLast}</span>
+                                                   <span class="${status}"></span>
+                                                   </div>`;
+                         break;
+
+                      case 4:
+                         var add = '#slot' + `${timeSlot}` + ' .thu';
+                         var lessonSlot = document.querySelector(`${add}`)
+                         var status = '';
+                         if (attendStatus == 'true') {
+                            status = 'bubble-present';
+                         } else {
+                            status = 'bubble-absent';
+                         }
+                         lessonSlot.innerHTML = ` <div class="lesson" onclick="showLessonDetail(${lessonID})">
+                                                   <span class="group">${groupName}</span><br><span class="course">${courseName}</span>
+                                                   <span class="room">${roomName}</span><br><br>
+                                                   <span class="material-symbols-outlined" id="clock">
+                                                   schedule
+                                                   </span>
+                                                   <span class="time">${timeLast}</span>
+                                                   <span class="${status}"></span>
+                                                   </div>`;
+                         break;
+                      case 5:
+                         var add = '#slot' + `${timeSlot}` + ' .fri';
+                         var lessonSlot = document.querySelector(`${add}`)
+                         var status = '';
+                         if (attendStatus == 'true') {
+                            status = 'bubble-present';
+                         } else {
+                            status = 'bubble-absent';
+                         }
+                         lessonSlot.innerHTML = `<div class="lesson" onclick="showLessonDetail(${lessonID})">
+                                                   <span class="group">${groupName}</span><br><span class="course">${courseName}</span>
+                                                   <span class="room">${roomName}</span><br><br>
+                                                   <span class="material-symbols-outlined" id="clock">
+                                                   schedule
+                                                   </span>
+                                                   <span class="time">${timeLast}</span>
+                                                   <span class="${status}"></span>
+                                                   </div>`;
+                         break;
+                      case 6:
+                         var add = '#slot' + `${timeSlot}` + ' .sat';
+                         var lessonSlot = document.querySelector(`${add}`)
+                         var status = '';
+                         if (attendStatus == 'true') {
+                            status = 'bubble-present';
+                         } else {
+                            status = 'bubble-absent';
+                         }
+                         lessonSlot.innerHTML = ` <div class="lesson" onclick="showLessonDetail(${lessonID})">
+                                                   <span class="group">${groupName}</span><br><span class="course">${courseName}</span>
+                                                   <span class="room">${roomName}</span><br><br>
+                                                   <span class="material-symbols-outlined" id="clock">
+                                                   schedule
+                                                   </span>
+                                                   <span class="time">${timeLast}</span>
+                                                   <span class="${status}"></span>
+                                                   </div>`;
+                         break;
+                   }
+                }
+             });
+          });
+       })
+       .catch(error => {
+          console.error('Lỗi: ', error);
+       });
 }

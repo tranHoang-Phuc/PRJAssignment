@@ -57,14 +57,24 @@ public class AccountRepository implements IRepository<Account> {
     }
 
     public Account get(String username, String password, int campusID) {
-        EntityManager em = JpaUtil.getEntityManager();
-        String jpql = "SELECT a FROM Account a WHERE a.username = :username AND a.password = :password AND a.campus.cid = :campusID";
-        TypedQuery<Account> query = em.createQuery(jpql, Account.class);
-        query.setParameter("username", username);
-        query.setParameter("password", password);
-        query.setParameter("campusID", campusID);
-        Account account = query.getSingleResult();
-        em.close();
-        return account;
+        try {
+            EntityManager em = JpaUtil.getEntityManager();
+            String jpql = "SELECT a FROM Account a WHERE a.username = :username AND a.password = :password AND a.campus.cid = :campusID";
+            TypedQuery<Account> query = em.createQuery(jpql, Account.class);
+            query.setParameter("username", username);
+            query.setParameter("password", password);
+            query.setParameter("campusID", campusID);
+            Account account = query.getSingleResult();
+            em.close();
+            return account;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public static void main(String[] args) {
+        AccountRepository repository = new AccountRepository();
+        Account account = repository.get("phucthhe172242@fpt.edu.vn", "PcyTt11@", 1);
+        System.out.println(account.getUsername());
     }
 }

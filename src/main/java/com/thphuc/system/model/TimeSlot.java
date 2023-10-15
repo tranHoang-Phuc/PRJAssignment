@@ -24,8 +24,8 @@ public class TimeSlot {
     @Column(name = "slot-id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int timeSlotID;
-    @Column(name = "start")
+    @Column(name = "[start]")
     private Time startTime;
-    @Column(name = "end")
+    @Column(name = "[end]")
     private Time endTime;
 }

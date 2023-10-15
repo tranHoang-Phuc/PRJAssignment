@@ -50,6 +50,10 @@
         var message = document.querySelector("#message");
         message.style.display = "none";
     }
+
+    function submitForm() {
+
+    }
 </script>
 </body>
 </html>

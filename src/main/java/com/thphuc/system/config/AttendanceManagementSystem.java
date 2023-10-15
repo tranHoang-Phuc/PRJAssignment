@@ -4,6 +4,7 @@
  */
 package com.thphuc.system.config;
 
+import com.thphuc.system.filter.CorsFilter;
 import jakarta.ws.rs.ApplicationPath;
 import org.glassfish.jersey.server.ResourceConfig;
 
@@ -15,6 +16,7 @@ import org.glassfish.jersey.server.ResourceConfig;
 public class AttendanceManagementSystem extends ResourceConfig{
 
     public AttendanceManagementSystem() {
+        register(CorsFilter.class);
         packages("com.thphuc.system.resource");
     }
     

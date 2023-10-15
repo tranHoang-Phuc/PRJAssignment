@@ -54,4 +54,14 @@ public class StudentRepository implements IRepository<Student>{
         em.getTransaction().commit();
         em.close();
     }
+
+    public Student getStudentByAccount(int accountID) {
+        EntityManager em = JpaUtil.getEntityManager();
+        String jpql = "SELECT s FROM Student s JOIN s.account a where a.accountID= :accountID";
+        Student student = em.createQuery(jpql, Student.class).setParameter("accountID", accountID).getSingleResult();
+        em.close();
+        return student;
+    }
+
+
 }

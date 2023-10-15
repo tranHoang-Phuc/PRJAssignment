@@ -9,9 +9,26 @@
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>ScheduleController</servlet-name>
+        <servlet-class>com.thphuc.system.controller.schedule.ScheduleController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ScheduleController</servlet-name>
+        <url-pattern>/weeklySchedule</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>HomeController</servlet-name>
+        <servlet-class>com.thphuc.system.controller.HomeController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HomeController</servlet-name>
+        <url-pattern>/home</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
+
     </session-config>
 </web-app>
