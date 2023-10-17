@@ -18,7 +18,6 @@
 </head>
 <body>
 <jsp:include page="../root/header.jsp"></jsp:include>
-
 <div id="header">
     <div class="class-info">
         <p>Class: <b>SE1763</b> - <b>PRJ301</b></p>

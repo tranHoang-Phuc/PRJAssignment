@@ -1,15 +1,12 @@
 package com.thphuc.system.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Column;
-import jakarta.persistence.GenerationType;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.Set;
 
 @Entity
 @Table(name = "Role")
@@ -24,4 +21,6 @@ public class Role {
     private int roleId;
     @Column(name = "role")
     private String role;
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "roles")
+    private Set<Feature> features;
 }

@@ -2,22 +2,31 @@ package com.thphuc.system.util;
 
 import java.sql.Date;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.util.Calendar;
 
 
 public class DateUtil {
 
     public static Date getMondayOfCurrentWeek() {
-        Calendar calendar = Calendar.getInstance();
-        java.util.Date currentDate = calendar.getTime();
-        calendar.setTime(currentDate);
-        calendar.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
-        calendar.add(Calendar.DATE, -6);
-        java.sql.Date sqlDate = new java.sql.Date(calendar.getTime().getTime());
-    return sqlDate;
+        LocalDate today = LocalDate.now();
+        DayOfWeek currentDayOfWeek = today.getDayOfWeek();
+        int daysUntilMonday = DayOfWeek.MONDAY.getValue() - currentDayOfWeek.getValue();
+        if (daysUntilMonday > 0) {
+            today = today.minusDays(daysUntilMonday);
+        }
+        LocalDate monday = today.plusDays(daysUntilMonday);
+        return Date.valueOf(monday);
     }
 
 
+
+
+    public static void main(String[] args) {
+        System.out.println(getMondayOfCurrentWeek());
+        System.out.println(getSundayOfCurrentWeek());
+    }
 
     public static Date getSundayOfCurrentWeek() {
         Date sundayDate = Date.valueOf(getMondayOfCurrentWeek().toLocalDate().plusDays(6));

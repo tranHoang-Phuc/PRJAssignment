@@ -20,7 +20,7 @@ classAttendance.forEach(student => {
                                     <input type="radio" name="status${no}" value="0" id="absent${no}" checked>
                                     <label for="absent${no}">Absent</label>
                                  </td>
-                                 <td>${comment}</td>
+                                 <td><textarea name="comment${no}"  cols="30" rows="4"></textarea></td>
                               </tr>`;
     no++;
 });

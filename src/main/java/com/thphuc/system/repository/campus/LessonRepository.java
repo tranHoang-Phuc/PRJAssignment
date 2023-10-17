@@ -87,7 +87,8 @@ public class LessonRepository implements IRepository<Lesson> {
         EntityManager em = JpaUtil.getEntityManager();
         try {
             String jpql = "SELECT l FROM Lesson l JOIN l.group g  " +
-                    "WHERE l.instructor.iCode = :instructorid AND l.date >= :startDate AND l.date <= :endDate";
+                    "WHERE l.instructor.iCode = :instructorid " +
+                    "AND l.date >= :startDate AND l.date <= :endDate";
             TypedQuery<Lesson> query = em.createQuery(jpql, Lesson.class);
             query.setParameter("instructorid", instructor.getICode());
             query.setParameter("startDate", monday);

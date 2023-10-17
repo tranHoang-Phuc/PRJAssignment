@@ -1,8 +1,10 @@
 package com.thphuc.system.controller.schedule;
 
+import com.thphuc.system.controller.authentication.BaseAuthorizationController;
 import com.thphuc.system.controller.authentication.BasedRequiredAuthenticationController;
 import com.thphuc.system.dto.AccountDTO;
 import com.thphuc.system.dto.UserDTO;
+import com.thphuc.system.model.Feature;
 import com.thphuc.system.repository.campus.InstructorRepository;
 import com.thphuc.system.repository.campus.StudentRepository;
 import com.thphuc.system.service.authentication.AccountService;
@@ -12,10 +14,11 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.util.Set;
 
-public class ScheduleController extends BasedRequiredAuthenticationController {
+public class ScheduleController extends BaseAuthorizationController {
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response, AccountDTO user) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response, AccountDTO user, Set<Feature> features) throws ServletException, IOException {
         InstructorRepository instructorRepository = new InstructorRepository();
         StudentRepository studentRepository = new StudentRepository();
         AccountService accountService = new AccountService(studentRepository, instructorRepository);
@@ -29,7 +32,9 @@ public class ScheduleController extends BasedRequiredAuthenticationController {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response, AccountDTO user) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response, AccountDTO user, Set<Feature> features) throws ServletException, IOException {
 
     }
+
+
 }

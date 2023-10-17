@@ -72,9 +72,5 @@ public class AccountRepository implements IRepository<Account> {
         }
     }
 
-    public static void main(String[] args) {
-        AccountRepository repository = new AccountRepository();
-        Account account = repository.get("phucthhe172242@fpt.edu.vn", "PcyTt11@", 1);
-        System.out.println(account.getUsername());
-    }
+
 }
