@@ -44,11 +44,12 @@ a:hover {
 }
 
 img {
-    width: 40%;
+    width: 30%;
 }
 
 th {
     color: red;
+    text-align: center;
 }
 
 button {

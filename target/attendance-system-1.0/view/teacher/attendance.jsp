@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,14 +15,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="../../css/teacher/attendance.css">
+    <link rel="stylesheet" href="../css/teacher/attendance.css">
 </head>
 <body>
 <jsp:include page="../root/header.jsp"></jsp:include>
 <div id="header">
     <div class="class-info">
-        <p>Class: <b>SE1763</b> - <b>PRJ301</b></p>
-        <p>Slot 4 - Monday 2/10/2023 with lecture <b>SonNT5</b></p>
+        <input type="hidden" id="lessonId" value="${requestScope.lessonId}" readonly>
+        <p>Class: <b>${requestScope.lesson.groupname}</b> - <b>${requestScope.lesson.courseName}</b></p>
+        <p>Slot ${requestScope.lesson.timeSlot <= 6 ?requestScope.lesson.timeSlot: requestScope.lesson.timeSlot-5} - <fmt:formatDate type="date" value="${requestScope.lesson.date}"/> with lecture <b>${requestScope.lesson.instructorCode}</b></p>
     </div>
     <div class="wrap">
         <form action="#" method="POST">
@@ -48,6 +50,6 @@
     </div>
 </div>
 <jsp:include page="../root/footer.jsp"/>
-<script src="../../js/teacher/attdendance.js"></script>
+<script src="../js/teacher/attdendance.js"></script>
 </body>
 </html>

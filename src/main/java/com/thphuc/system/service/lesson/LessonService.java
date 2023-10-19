@@ -33,7 +33,7 @@ public class LessonService {
             lessonDTO.setRoomName(lesson.getRoom().getRoomName());
             lessonDTO.setTimeSlot(lesson.getTimeSlot().getTimeSlotID() + "");
             lessonDTO.setTimeLast(lesson.getTimeSlot().getStartTime() + " - " + lesson.getTimeSlot().getEndTime());
-            lessonDTO.setDate(lesson.getDate().toString());
+            lessonDTO.setDate(lesson.getDate());
             lessonDTO.setSessionNo(lesson.getSessionNo());
             lessonDTO.setAttendanceStatus(lesson.getAttendanceStatus());
             lessonDTOs.add(lessonDTO);
@@ -48,5 +48,28 @@ public class LessonService {
         Instructor instructor = new Instructor();
         instructor.setICode(iCode);
         return lessonRepository.getWeeklyTimeTalbe(mondayDate, sundayDate, instructor);
+    }
+
+    public LessonDTO getLessonById(int id) {
+        Lesson lesson = lessonRepository.get(id);
+        LessonDTO lessonDTO = new LessonDTO();
+        lessonDTO.setLessonID(lesson.getLessonID());
+        lessonDTO.setInstructorCode(lesson.getInstructor().getICode());
+        lessonDTO.setGroupname(lesson.getGroup().getGroupName());
+        lessonDTO.setCourseName(lesson.getGroup().getCourse().getCourseName());
+        lessonDTO.setRoomName(lesson.getRoom().getRoomName());
+        lessonDTO.setTimeSlot(lesson.getTimeSlot().getTimeSlotID() + "");
+        lessonDTO.setTimeLast(lesson.getTimeSlot().getStartTime() + " - " + lesson.getTimeSlot().getEndTime());
+        lessonDTO.setDate(lesson.getDate());
+        lessonDTO.setSessionNo(lesson.getSessionNo());
+        lessonDTO.setAttendanceStatus(lesson.getAttendanceStatus());
+        return lessonDTO;
+    }
+
+    public static void main(String[] args) {
+        LessonRepository lessonRepository = new LessonRepository();
+        LessonService lessonService = new LessonService(lessonRepository);
+        LessonDTO lessonDTO = lessonService.getLessonById(13);
+        System.out.println(lessonDTO.getInstructorCode());
     }
 }

@@ -1,15 +1,16 @@
-var jsonString = '[{"group": "SE1234", "code": "HE123456", "name": "Hihi haha", "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRY_cb64ZNHmLWkIIOYwKdmbC3LBdGAavhLfQ&usqp=CAU", "comment": ""}, {"group": "SE1234", "code": "HE123457", "name": "Kaka haha", "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6gqfc1sFuQy6tFOYOKBIy2YszMvVFMUj4ZuizdsbMFKmdMPUMOJQK10ATdRBkx1uyP98&usqp=CAU", "comment": ""}, {"group": "SE1234", "code": "HE123458", "name": "Kaka haha", "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6gqfc1sFuQy6tFOYOKBIy2YszMvVFMUj4ZuizdsbMFKmdMPUMOJQK10ATdRBkx1uyP98&usqp=CAU", "comment": ""},{"group": "SE1234", "code": "HE123456", "name": "Hihi haha", "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRY_cb64ZNHmLWkIIOYwKdmbC3LBdGAavhLfQ&usqp=CAU", "comment": ""}, {"group": "SE1234", "code": "HE123457", "name": "Kaka haha", "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6gqfc1sFuQy6tFOYOKBIy2YszMvVFMUj4ZuizdsbMFKmdMPUMOJQK10ATdRBkx1uyP98&usqp=CAU","comment": ""}, {"group": "SE1234", "code": "HE123458", "name": "Kaka haha", "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6gqfc1sFuQy6tFOYOKBIy2YszMvVFMUj4ZuizdsbMFKmdMPUMOJQK10ATdRBkx1uyP98&usqp=CAU","comment": ""}]';
-var classAttendance = JSON.parse(jsonString);
-
+var lessonId = document.querySelector('#lessonId');
+var url = 'http://localhost:8080/attendance_system_war/api/teacher/report/attendance/' + lessonId.value;
 var students = document.querySelector('#students');
 var no = 1;
-classAttendance.forEach(student => {
-    var group = student["group"];
-    var scode = student["code"];
-    var sname = student["name"];
-    var img = student["img"];
-    var comment = student["comment"];
-    students.innerHTML += `<tr>
+fetch(url)
+    .then(response => response.json())
+    .then(data => {
+        data.forEach(dat => {
+            var group = dat["lesson"]["groupname"];
+            var scode = dat["student"]["scode"];
+            var sname = dat["student"]["firstName"] + " " + dat["student"]["lastName"];
+            var img = dat["student"]["img"];
+            students.innerHTML += `<tr>
                                  <td>${no}</td>
                                  <td>${group}</td>
                                  <td>${scode}</td>
@@ -22,9 +23,9 @@ classAttendance.forEach(student => {
                                  </td>
                                  <td><textarea name="comment${no}"  cols="30" rows="4"></textarea></td>
                               </tr>`;
-    no++;
-});
-
+            no++;
+        });
+    });
 function attendanceClear() {
     for (let index = 1; index < no; index++) {
         var element = `#absent${index}`;

@@ -62,4 +62,12 @@ public class AttendanceRepository implements IRepository<Attendance>{
         em.close();
         return list;
     }
+
+    public static void main(String[] args) {
+        AttendanceRepository attendanceRepository = new AttendanceRepository();
+        List<Attendance> list = attendanceRepository.getAttendanceByLessonId(18);
+        System.out.println(list.size());
+    }
+
+
 }

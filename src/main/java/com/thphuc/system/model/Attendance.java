@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.sql.Date;
+import java.sql.Time;
 import java.sql.Timestamp;
 @Entity
 @Table(name = "Attendance")
@@ -24,6 +26,10 @@ public class Attendance {
     private Lesson lesson;
     @Column(name = "status")
     private Integer status;
-    @Column(name = "recorded-time")
-    private Timestamp recordedTime;
+    @Column(name = "record-time")
+    private Time recordedTime;
+    @Column(name = "record-day")
+    private Date recordedDay;
+    @Column(name = "comment")
+    private String comment;
 }
