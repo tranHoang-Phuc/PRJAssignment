@@ -1,10 +1,8 @@
 package com.thphuc.system.repository.campus;
 
-import com.thphuc.system.model.Group;
 import com.thphuc.system.model.Instructor;
 import com.thphuc.system.model.Lesson;
-import com.thphuc.system.model.Student;
-import com.thphuc.system.util.DateUtil;
+import com.thphuc.system.util.DateTimeUtil;
 import com.thphuc.system.util.JpaUtil;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
@@ -63,8 +61,8 @@ public class LessonRepository implements IRepository<Lesson> {
     public List<Lesson> getWeeklyTimeTable(Instructor instructor) {
         EntityManager em = JpaUtil.getEntityManager();
         try {
-            Date monday = DateUtil.getMondayOfCurrentWeek();
-            Date sunday = DateUtil.getSundayOfCurrentWeek();
+            Date monday = DateTimeUtil.getMondayOfCurrentWeek();
+            Date sunday = DateTimeUtil.getSundayOfCurrentWeek();
             String jpql = "SELECT l FROM Lesson l JOIN l.group g  " +
                     "WHERE l.instructor.iCode = :instructorid AND l.date >= :startDate AND l.date <= :endDate";
             TypedQuery<Lesson> query = em.createQuery(jpql, Lesson.class);

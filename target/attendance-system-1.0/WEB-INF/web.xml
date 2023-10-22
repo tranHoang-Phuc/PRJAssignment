@@ -10,6 +10,14 @@
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
     <servlet>
+        <servlet-name>ConfirmAttendanceController</servlet-name>
+        <servlet-class>com.thphuc.system.controller.teacher.ConfirmAttendanceController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ConfirmAttendanceController</servlet-name>
+        <url-pattern>/teacher/confirm</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>AttendanceController</servlet-name>
         <servlet-class>com.thphuc.system.controller.teacher.AttendanceController</servlet-class>
     </servlet>

@@ -22,5 +22,4 @@ public class LessonDTO {
     private Date date;
     private int sessionNo;
     private Boolean attendanceStatus;
-
 }

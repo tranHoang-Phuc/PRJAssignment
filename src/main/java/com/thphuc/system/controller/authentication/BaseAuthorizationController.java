@@ -19,7 +19,7 @@ public abstract class BaseAuthorizationController extends BasedRequiredAuthentic
         AuthorizationService authorizationService = new AuthorizationService(featureRepository);
         Set<Feature> featureDTOList = authorizationService.getFeatureByRole(account, url);
         account.getRole().setFeatures(featureDTOList);
-        return featureDTOList.size() > 0;
+        return !featureDTOList.isEmpty();
     }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response, AccountDTO user) throws ServletException, IOException {

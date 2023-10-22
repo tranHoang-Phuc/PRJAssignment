@@ -66,10 +66,5 @@ public class LessonService {
         return lessonDTO;
     }
 
-    public static void main(String[] args) {
-        LessonRepository lessonRepository = new LessonRepository();
-        LessonService lessonService = new LessonService(lessonRepository);
-        LessonDTO lessonDTO = lessonService.getLessonById(13);
-        System.out.println(lessonDTO.getInstructorCode());
-    }
+
 }

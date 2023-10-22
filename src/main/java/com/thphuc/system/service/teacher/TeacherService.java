@@ -4,13 +4,39 @@ import com.thphuc.system.dto.AttendanceDTO;
 import com.thphuc.system.dto.LessonDTO;
 import com.thphuc.system.dto.StudentDTO;
 import com.thphuc.system.model.Attendance;
+import com.thphuc.system.model.Lesson;
+import com.thphuc.system.model.Student;
 import com.thphuc.system.repository.campus.AttendanceRepository;
+import com.thphuc.system.repository.campus.LessonRepository;
+import com.thphuc.system.repository.campus.StudentRepository;
 
 import java.util.List;
 import java.util.ArrayList;
 
 public class TeacherService {
     private AttendanceRepository attendanceRepository;
+    private StudentRepository studentRepository;
+
+    private LessonRepository lessonRepository;
+
+    public TeacherService(AttendanceRepository attendanceRepository, StudentRepository studentRepository, LessonRepository lessonRepository) {
+        this.attendanceRepository = attendanceRepository;
+        this.studentRepository = studentRepository;
+        this.lessonRepository = lessonRepository;
+    }
+
+    public TeacherService(LessonRepository lessonRepository) {
+        this.lessonRepository = lessonRepository;
+    }
+
+    public TeacherService(AttendanceRepository attendanceRepository, StudentRepository studentRepository) {
+        this.attendanceRepository = attendanceRepository;
+        this.studentRepository = studentRepository;
+    }
+
+    public TeacherService(StudentRepository studentRepository) {
+        this.studentRepository = studentRepository;
+    }
 
     public TeacherService(AttendanceRepository attendanceRepository) {
         this.attendanceRepository = attendanceRepository;
@@ -55,5 +81,24 @@ public class TeacherService {
             attendanceDTOS.add(attendanceDTO);
         }
         return attendanceDTOS;
+    }
+
+    public void updateAttendance(AttendanceDTO attendanceDTO) {
+        attendanceRepository.update(convertToAttendance(attendanceDTO));
+    }
+
+    public Attendance convertToAttendance(AttendanceDTO attendanceDTO) {
+        Attendance attendance = new Attendance();
+        Student s = studentRepository.getStudentByScode(attendanceDTO.getScode());
+        attendance.setStudent(s);
+        Lesson l = lessonRepository.get(attendanceDTO.getLesson().getLessonID());
+        l.setAttendanceStatus(true);
+        lessonRepository.update(l);
+        attendance.setLesson(l);
+        attendance.setRecordedDay(attendanceDTO.getRecordedDay());
+        attendance.setRecordedTime(attendanceDTO.getRecordedTime());
+        attendance.setStatus(attendanceDTO.getStatus());
+        attendance.setComment(attendanceDTO.getComment());
+        return attendance;
     }
 }

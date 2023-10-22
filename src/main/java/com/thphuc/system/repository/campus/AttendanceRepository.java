@@ -57,17 +57,13 @@ public class AttendanceRepository implements IRepository<Attendance>{
 
     public List<Attendance> getAttendanceByLessonId(int lessonId) {
         EntityManager em = JpaUtil.getEntityManager();
-        String jpql = "SELECT a FROM Attendance a WHERE a.lesson.lessonID = :lessonId";
+        String jpql = "SELECT a FROM Attendance a  WHERE a.lesson.lessonID = :lessonId";
         List<Attendance> list = em.createQuery(jpql, Attendance.class).setParameter("lessonId", lessonId).getResultList();
         em.close();
         return list;
     }
 
-    public static void main(String[] args) {
-        AttendanceRepository attendanceRepository = new AttendanceRepository();
-        List<Attendance> list = attendanceRepository.getAttendanceByLessonId(18);
-        System.out.println(list.size());
-    }
+
 
 
 }

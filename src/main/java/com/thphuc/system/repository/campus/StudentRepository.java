@@ -64,4 +64,13 @@ public class StudentRepository implements IRepository<Student>{
     }
 
 
+    public Student getStudentByScode(String scode) {
+        EntityManager em = JpaUtil.getEntityManager();
+        String jpql = "SELECT s FROM Student s where s.scode= :scode";
+        Student student = em.createQuery(jpql, Student.class).setParameter("scode", scode).getSingleResult();
+        em.close();
+        return student;
+    }
+
+
 }

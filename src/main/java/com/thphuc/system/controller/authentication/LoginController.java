@@ -28,11 +28,16 @@ public class LoginController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        CampusRepository repository = new CampusRepository();
-        CampusService campusService = new CampusService(repository);
-        List<CampusDTO> list = campusService.getAll();
-        req.setAttribute("list", list);
-        req.getRequestDispatcher("view/authentication/login.jsp").forward(req, resp);
+        AccountDTO account = (AccountDTO) SessionUtil.getInstance().getValue(req, "account");
+        if (account == null) {
+            CampusRepository repository = new CampusRepository();
+            CampusService campusService = new CampusService(repository);
+            List<CampusDTO> list = campusService.getAll();
+            req.setAttribute("list", list);
+            req.getRequestDispatcher("view/authentication/login.jsp").forward(req, resp);
+        } else {
+            resp.sendRedirect(req.getContextPath() + "/home");
+        }
     }
 
     @Override

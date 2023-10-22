@@ -83,3 +83,7 @@ button {
 .btn-outline-primary {
     width: 103px;
 }
+
+.btn-outline-primary:hover {
+    color: white;
+}

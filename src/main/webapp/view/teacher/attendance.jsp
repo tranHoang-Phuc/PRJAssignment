@@ -26,8 +26,9 @@
         <p>Slot ${requestScope.lesson.timeSlot <= 6 ?requestScope.lesson.timeSlot: requestScope.lesson.timeSlot-5} - <fmt:formatDate type="date" value="${requestScope.lesson.date}"/> with lecture <b>${requestScope.lesson.instructorCode}</b></p>
     </div>
     <div class="wrap">
-        <form action="#" method="POST">
+        <form action="attendance" method="POST">
             <table class="table table-striped">
+                <input type="hidden" value="${param.lessonId}" name="lessonId">
                 <thead>
                 <tr>
                     <th style="color: #0e79d7;">No</th>
