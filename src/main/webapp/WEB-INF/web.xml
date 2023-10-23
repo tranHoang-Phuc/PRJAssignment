@@ -16,7 +16,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>ViewAttendanceController</servlet-name>
-        <url-pattern>/viewAttendance</url-pattern>
+        <url-pattern>/teacher/attendance-detail</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>ConfirmAttendanceController</servlet-name>

@@ -6,6 +6,7 @@ import com.thphuc.system.dto.StudentDTO;
 import com.thphuc.system.model.Attendance;
 import com.thphuc.system.model.Lesson;
 import com.thphuc.system.model.Student;
+import com.thphuc.system.model.TimeSlot;
 import com.thphuc.system.repository.campus.AttendanceRepository;
 import com.thphuc.system.repository.campus.LessonRepository;
 import com.thphuc.system.repository.campus.StudentRepository;
@@ -34,9 +35,6 @@ public class TeacherService {
         this.studentRepository = studentRepository;
     }
 
-    public TeacherService(StudentRepository studentRepository) {
-        this.studentRepository = studentRepository;
-    }
 
     public TeacherService(AttendanceRepository attendanceRepository) {
         this.attendanceRepository = attendanceRepository;
@@ -89,7 +87,7 @@ public class TeacherService {
 
     public Attendance convertToAttendance(AttendanceDTO attendanceDTO) {
         Attendance attendance = new Attendance();
-        Student s = studentRepository.getStudentByScode(attendanceDTO.getScode());
+        Student s = studentRepository.get(attendanceDTO.getStudent().getSid());
         attendance.setStudent(s);
         Lesson l = lessonRepository.get(attendanceDTO.getLesson().getLessonID());
         l.setAttendanceStatus(true);
@@ -100,5 +98,31 @@ public class TeacherService {
         attendance.setStatus(attendanceDTO.getStatus());
         attendance.setComment(attendanceDTO.getComment());
         return attendance;
+    }
+
+    public List<AttendanceDTO> getAttendanceByScode(String scode, String group, String course) {
+        List<Attendance> attendances =  attendanceRepository.getAttendanceByScode(scode, group, course);
+        return convertToAttendanceDTO(attendances);
+    }
+    public List<AttendanceDTO> convertToAttendanceDTO(List<Attendance> attendances) {
+        List<AttendanceDTO> attendanceDTOS = new ArrayList<>();
+        for (Attendance a: attendances){
+            AttendanceDTO attendanceDTO = new AttendanceDTO();
+            LessonDTO lessonDTO = new LessonDTO();
+            TimeSlot timeSlot = new TimeSlot();
+            timeSlot.setTimeSlotID(a.getLesson().getTimeSlot().getTimeSlotID());
+            lessonDTO.setInstructorCode(a.getLesson().getInstructor().getICode());
+            StudentDTO studentDTO = new StudentDTO();
+            studentDTO.setSid(a.getStudent().getSid());
+            attendanceDTO.setStudent(studentDTO);
+            attendanceDTO.setGroupName(a.getLesson().getGroup().getGroupName());
+            attendanceDTO.setSlotId(a.getLesson().getTimeSlot().getTimeSlotID());
+            attendanceDTO.setRoomName(a.getLesson().getRoom().getRoomName());
+            lessonDTO.setGroupname(a.getLesson().getGroup().getGroupName());
+            lessonDTO.setDate(a.getLesson().getDate());
+            attendanceDTO.setLesson(lessonDTO);
+            attendanceDTOS.add(attendanceDTO);
+        }
+        return attendanceDTOS;
     }
 }

@@ -3,6 +3,7 @@ package com.thphuc.system.repository.campus;
 import com.thphuc.system.model.Attendance;
 import com.thphuc.system.util.JpaUtil;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
 
 import java.util.List;
 
@@ -62,6 +63,19 @@ public class AttendanceRepository implements IRepository<Attendance>{
         em.close();
         return list;
     }
+
+    public List<Attendance> getAttendanceByScode(String scode, String group, String course) {
+        EntityManager em = JpaUtil.getEntityManager();
+        String jpql = "SELECT a FROM Attendance a WHERE a.lesson.lessonID IN (SELECT DISTINCT l.lessonID FROM Lesson l WHERE l.group.groupName=:group AND l.group.course.courseName=:course) AND a.student.sid=:sid ORDER BY a.lesson.sessionNo ASC";
+        TypedQuery<Attendance> query = em.createQuery(jpql, Attendance.class);
+        query.setParameter("sid", scode);
+        query.setParameter("group", group);
+        query.setParameter("course", course);
+        List<Attendance> list = query.getResultList();
+        em.close();
+        return list;
+    }
+
 
 
 

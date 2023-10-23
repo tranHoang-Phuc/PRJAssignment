@@ -6,15 +6,17 @@ fetch(url)
     .then(response => response.json())
     .then(data => {
         data.forEach(dat => {
+            var sid = dat["student"]["sid"];
             var group = dat["lesson"]["groupname"];
             var scode = dat["student"]["scode"];
             var sname = dat["student"]["firstName"] + " " + dat["student"]["lastName"];
             var img = dat["student"]["img"];
             var status = dat["status"];
-            var comment = dat["comment"];
+            var comment = dat["comment"] === null ? "" : dat["comment"];
             students.innerHTML += `<tr>
                                  <td>${no}</td>
                                  <input type="hidden" value="${no}" name="index">
+                                 <input type="hidden" value="${sid}" name="sid${no}">
                                  <td>${group}</td>
                                  <td>${scode}</td>
                                  <td>${sname}</td>

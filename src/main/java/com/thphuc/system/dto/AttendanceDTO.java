@@ -17,8 +17,10 @@ public class AttendanceDTO {
     private String scode;
     private StudentDTO student;
     private LessonDTO lesson;
+    private int slotId;
     private Date recordedDay;
     private Time recordedTime;
     private int status;
     private String comment;
+    private String roomName;
 }

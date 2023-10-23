@@ -14,33 +14,15 @@
     <title>FPT University Academic Portal</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="../../css/student/view-attendance.css">
+    <link rel="stylesheet" href="../css/student/view-attendance.css">
 </head>
 <body>
 <jsp:include page="../root/header.jsp"></jsp:include>
 <div class="header">
-    <div class="choice">
-        <table>
-            <tr>
-                <td><b>Semester</b> &nbsp; &nbsp; &nbsp;</td>
-                <td style="display: flex;">
-                    <button type="button" class="element-semester">Fall2022</button>
-                    <button type="button" class="element-semester">Spring2023</button>
-                    <button type="button" class="element-semester">Summer2023</button>
-                    <button type="button" class="element-semester">Fall2023</button>
-                </td>
-            </tr>
-            <tr>
-                <td><b>Course</b> &nbsp; &nbsp; &nbsp;</td>
-                <td style="display: flex;">
-                    <button type="button" class="element-course">PRJ301</button>
-                    <button type="button" class="element-course">MAS292</button>
-                    <button type="button" class="element-course">IoT102</button>
-                    <button type="button" class="element-course">JPD123</button>
-                    <button type="button" class="element-course">SWE201c</button>
-                </td>
-            </tr>
-        </table>
+    <div id="student-info">
+        <input type="hidden" value="${requestScope.student.sid}" readonly id="sid">
+        <p>${requestScope.student.firstName} ${requestScope.student.lastName}</p>
+        <p>Class: <b id="group">${requestScope.group}</b> - Course: <b id="course">${requestScope.course}</b></p>
     </div>
     <div class="wrap">
         <table id="attendance" class="table table-striped">
@@ -62,6 +44,6 @@
     </div>
 </div>
 <jsp:include page="../root/footer.jsp"></jsp:include>
-<script src="../../js/student/view-attendance.js"></script>
+<script src="../js/student/view-attendance.js"></script>
 </body>
 </html>

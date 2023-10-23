@@ -26,7 +26,6 @@ public class Group {
     @ManyToOne
     @JoinColumn(name = "course-id")
     private Course course;
-
     @ManyToMany
     @JoinTable(
             name = "StudentGroup",

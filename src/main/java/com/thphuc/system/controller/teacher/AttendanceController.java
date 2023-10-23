@@ -4,6 +4,7 @@ import com.thphuc.system.controller.authentication.BaseAuthorizationController;
 import com.thphuc.system.dto.AccountDTO;
 import com.thphuc.system.dto.AttendanceDTO;
 import com.thphuc.system.dto.LessonDTO;
+import com.thphuc.system.dto.StudentDTO;
 import com.thphuc.system.model.Feature;
 import com.thphuc.system.repository.campus.AttendanceRepository;
 import com.thphuc.system.repository.campus.LessonRepository;
@@ -41,6 +42,7 @@ public class AttendanceController extends BaseAuthorizationController {
         int lessonId = Integer.parseInt(request.getParameter("lessonId"));
         String[] index = request.getParameterValues("index");
         for (String s: index) {
+            int sid = Integer.parseInt(request.getParameter("sid" + s));
             String scodeParamName = "scode" + s;
             String statusParamName = "status" + s;
             String commentParamName = "comment" + s;
@@ -52,11 +54,14 @@ public class AttendanceController extends BaseAuthorizationController {
             lessonDTO.setLessonID(lessonId);
             attendanceDTO.setLesson(lessonDTO);
             attendanceDTO.setScode(scode);
+            StudentDTO studentDTO = new StudentDTO();
+            studentDTO.setSid(sid);
+            attendanceDTO.setStudent(studentDTO);
             attendanceDTO.setStatus(Integer.parseInt(status));
             attendanceDTO.setComment(comment);
             attendanceDTO.setRecordedDay(DateTimeUtil.getCurrentSqlDate());
             attendanceDTO.setRecordedTime(DateTimeUtil.getCurrentSqlTime());
-            //teacherService.updateAttendance(attendanceDTO);
+            teacherService.updateAttendance(attendanceDTO);
         }
         SessionUtil.getInstance().putValue(request, "lessonId", lessonId);
         response.sendRedirect(request.getContextPath() + "/teacher/confirm");

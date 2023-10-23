@@ -14,179 +14,51 @@ function showOn(elements) {
         });
     });
 }
-
-var json = `[{
-   "date": "05/09/2020",
-   "slot": 1,
-   "room": "BE310",
-   "instructor": "sonnt5",
-   "group" : "SE1763",
-   "attendance": "1"
-}, {
-   "date": "05/09/2020",
-   "slot": 1,
-   "room": "BE310",
-   "instructor": "sonnt5",
-   "group" : "SE1763",
-   "attendance": "1"
-}, {
-   "date": "05/09/2020",
-   "slot": 1,
-   "room": "BE310",
-   "instructor": "sonnt5",
-   "group" : "SE1763",
-   "attendance": "1"
-}, {
-   "date": "05/09/2020",
-   "slot": 1,
-   "room": "BE310",
-   "instructor": "sonnt5",
-   "group" : "SE1763",
-   "attendance": "0"
-}, {
-   "date": "05/09/2020",
-   "slot": 1,
-   "room": "BE310",
-   "instructor": "sonnt5",
-   "group" : "SE1763",
-   "attendance": "2"
-}, {
-   "date": "05/09/2020",
-   "slot": 1,
-   "room": "BE310",
-   "instructor": "sonnt5",
-   "group" : "SE1763",
-   "attendance": "2"
-}, {
-   "date": "05/09/2020",
-   "slot": 1,
-   "room": "BE310",
-   "instructor": "sonnt5",
-   "group" : "SE1763",
-   "attendance": "2"
-}, {
-   "date": "05/09/2020",
-   "slot": 1,
-   "room": "BE310",
-   "instructor": "sonnt5",
-   "group" : "SE1763",
-   "attendance": "2"
-}, {
-   "date": "05/09/2020",
-   "slot": 1,
-   "room": "BE310",
-   "instructor": "sonnt5",
-   "group" : "SE1763",
-   "attendance": "2"
-}, {
-   "date": "05/09/2020",
-   "slot": 1,
-   "room": "BE310",
-   "instructor": "sonnt5",
-   "group" : "SE1763",
-   "attendance": "2"
-}, {
-   "date": "05/09/2020",
-   "slot": 1,
-   "room": "BE310",
-   "instructor": "sonnt5",
-   "group" : "SE1763",
-   "attendance": "2"
-}, {
-   "date": "05/09/2020",
-   "slot": 1,
-   "room": "BE310",
-   "instructor": "sonnt5",
-   "group" : "SE1763",
-   "attendance": "2"
-}, {
-   "date": "05/09/2020",
-   "slot": 1,
-   "room": "BE310",
-   "instructor": "sonnt5",
-   "group" : "SE1763",
-   "attendance": "2"
-}, {
-   "date": "05/09/2020",
-   "slot": 1,
-   "room": "BE310",
-   "instructor": "sonnt5",
-   "group" : "SE1763",
-   "attendance": "2"
-}, {
-   "date": "05/09/2020",
-   "slot": 1,
-   "room": "BE310",
-   "instructor": "sonnt5",
-   "group" : "SE1763",
-   "attendance": "2"
-},{
-   "date": "05/09/2020",
-   "slot": 1,
-   "room": "BE310",
-   "instructor": "sonnt5",
-   "group" : "SE1763",
-   "attendance": "2"
-}, {
-   "date": "05/09/2020",
-   "slot": 1,
-   "room": "BE310",
-   "instructor": "sonnt5",
-   "group" : "SE1763",
-   "attendance": "2"
-}, {
-   "date": "05/09/2020",
-   "slot": 1,
-   "room": "BE310",
-   "instructor": "sonnt5",
-   "group" : "SE1763",
-   "attendance": "2"
-}, {
-   "date": "05/09/2020",
-   "slot": 1,
-   "room": "BE310",
-   "instructor": "sonnt5",
-   "group" : "SE1763",
-   "attendance": "2"
-}, {
-   "date": "05/09/2020",
-   "slot": 1,
-   "room": "BE310",
-   "instructor": "sonnt5",
-   "group" : "SE1763",
-   "attendance": "2"
-}]`;
+var sid = document.querySelector('#sid').value;
+var group = document.querySelector('#group').textContent;
+var course = document.querySelector('#course').textContent;
+var url = `http://localhost:8080/attendance_system_war/api/teacher/report/attendance/${sid}/${group}/${course}`;
 var index = 1;
 var tbody = document.querySelector('#data');
-var data = JSON.parse(json);
-data.forEach(element => {
-    var date = element.date;
-    var slot = element.slot;
-    var room = element.room;
-    var lecture = element.instructor;
-    var group = element.group;
-    var attendance = element.attendance;
-    var color = '';
-    var status = '';
-    if (attendance == 0) {
-        status = 'Absent';
-        color = 'red';
-    } else if (attendance == 1) {
-        status = 'Present';
-        color = 'green';
-    } else {
-        status = 'Future';
-        color = 'orange';
-    }
-    tbody.innerHTML += `  <tr>
+fetch(url)
+    .then(response => response.json())
+    .then(data => {
+        data.forEach(element => {
+            var date = new Date(element["lesson"]["date"]);
+            const year = date.getFullYear();
+            const month = date.getMonth() + 1;
+            const day = date.getDate();
+            var attendanceDate = `${day}/${month}/${year}`;
+
+            var slot = element["slotId"];
+            var room = element["roomName"].trim();
+            var lecture = element["lesson"]["instructorCode"];
+            var group = element["groupName"];
+            var attendance = element["status"];
+            var color = '';
+            var status = '';
+            if (attendance == 0) {
+                status = 'Absent';
+                color = 'red';
+            } else if (attendance == 1) {
+                status = 'Present';
+                color = 'green';
+            } else {
+                status = 'Future';
+                color = 'orange';
+            }
+            tbody.innerHTML += `  <tr>
                                  <td>${index}</td>
-                                 <td>${date}</td>
+                                 <td>${attendanceDate}</td>
                                  <td>${slot}</td>
                                  <td>${room}</td>
                                  <td>${lecture}</td>
                                  <td>${group}</td>
                                  <td style="color: ${color};">${status}</td>
                               </tr>`;
-    index++;
-});
+            index++;
+        });
+    });
+
+
 

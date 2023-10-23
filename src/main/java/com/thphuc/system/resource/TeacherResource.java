@@ -6,6 +6,7 @@ package com.thphuc.system.resource;
 
 import com.thphuc.system.dto.AttendanceDTO;
 import com.thphuc.system.dto.LessonDTO;
+import com.thphuc.system.model.Attendance;
 import com.thphuc.system.model.Lesson;
 import com.thphuc.system.repository.campus.AttendanceRepository;
 import com.thphuc.system.repository.campus.LessonRepository;
@@ -54,7 +55,14 @@ public class TeacherResource {
         List<AttendanceDTO> attendanceDTOS = teacherService.getAttendanceByLessonId(Integer.parseInt(lessonId));
         return attendanceDTOS;
     }
-
-
+    @GET
+    @Path("attendance/{scode}/{group}/{course}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<AttendanceDTO> getAttendanceByScode(@PathParam("scode") String scode, @PathParam("group") String group,
+                                                 @PathParam("course")String course) {
+        AttendanceRepository attendanceRepository = new AttendanceRepository();
+        TeacherService teacherService = new TeacherService(attendanceRepository);
+        return teacherService.getAttendanceByScode(scode, group, course);
+    }
 
 }

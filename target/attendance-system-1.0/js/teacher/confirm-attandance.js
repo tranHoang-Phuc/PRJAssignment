@@ -1,19 +1,20 @@
 var lecture = document.querySelector('#lecture').textContent;
-var url = 'http://localhost:8080/attendance_system_war/api/teacher/report/attendance/18';
+var lessonId = document.querySelector('#lessonId').value;
+var url = 'http://localhost:8080/attendance_system_war/api/teacher/report/attendance/' + lessonId;
 var students = document.querySelector('#students');
 var no = 1;
 fetch(url)
     .then(response => response.json())
     .then(data => {
         data.forEach(dat => {
-
+            var sid = dat["student"]["sid"];
             var group = dat["lesson"]["groupname"];
             var scode = dat["student"]["scode"];
             var course = dat["lesson"]["courseName"];
-            var name = dat["student"]["firstName"] + dat["student"]["lastName"];
+            var name = dat["student"]["firstName"] + " "+ dat["student"]["lastName"];
             var img = dat["student"]["img"];
             var status = dat["status"];
-            var comment = dat["comment"];
+            var comment = dat["comment"] === null ? '' : dat["comment"];
             var date = new Date(dat["recordedDay"]);
             const year = date.getFullYear();
             const month = date.getMonth() + 1;
@@ -46,9 +47,14 @@ fetch(url)
                                           <input type="hidden" value="${scode}">
                                           <input type="hidden" value="${group}">
                                           <input type="hidden" value="">
-                                       <td><span><button type="button" class="btn btn-outline-primary" onclick="attendanceClear()"><a style="color: #0d6efd" href="../viewAttendance?scode=${scode}&group=${group}&course=${course}">View detail</a></button></span></td>
+                                       <td><span><button type="button" class="btn btn-outline-primary" onclick="viewAttendance('${sid}', '${group}', '${course}')">View detail</a></button></span></td>
                                        </form>
                                  </tr>`;
             no++;
         });
     });
+
+function viewAttendance(sid, group, course) {
+    const url = `http://localhost:8080/attendance_system_war/teacher/attendance-detail?sid=${sid}&group=${group}&course=${course}`;
+    window.location.href = url;
+}
