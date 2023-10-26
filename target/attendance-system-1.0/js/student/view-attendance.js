@@ -5,6 +5,22 @@ showOn(elementCourse);
 const elementGroup = document.querySelectorAll('.element-group');
 showOn(elementGroup);
 
+function getAbsentRate() {
+    const absentElements = document.querySelectorAll('.attendanceStatus');
+    let absentCount = 0;
+
+    absentElements.forEach(element => {
+        if (element.textContent === 'Absent') {
+            absentCount++;
+        }
+    });
+
+    const totalElements = absentElements.length;
+    const rate = (absentCount / totalElements) * 100;
+
+    return `ABSENT: ${rate.toFixed(0)}% ABSENT SO FAR(${absentCount} ABSENT ON ${absentElements.length} TOTAL).`;
+}
+
 
 function showOn(elements) {
     elements.forEach(element => {
@@ -14,6 +30,7 @@ function showOn(elements) {
         });
     });
 }
+
 var sid = document.querySelector('#sid').value;
 var group = document.querySelector('#group').textContent;
 var course = document.querySelector('#course').textContent;
@@ -29,7 +46,6 @@ fetch(url)
             const month = date.getMonth() + 1;
             const day = date.getDate();
             var attendanceDate = `${day}/${month}/${year}`;
-
             var slot = element["slotId"];
             var room = element["roomName"].trim();
             var lecture = element["lesson"]["instructorCode"];
@@ -37,10 +53,10 @@ fetch(url)
             var attendance = element["status"];
             var color = '';
             var status = '';
-            if (attendance == 0) {
+            if (attendance === 0) {
                 status = 'Absent';
                 color = 'red';
-            } else if (attendance == 1) {
+            } else if (attendance === 1) {
                 status = 'Present';
                 color = 'green';
             } else {
@@ -54,11 +70,15 @@ fetch(url)
                                  <td>${room}</td>
                                  <td>${lecture}</td>
                                  <td>${group}</td>
-                                 <td style="color: ${color};">${status}</td>
+                                 <td style="color: ${color};" class="attendanceStatus">${status}</td>
                               </tr>`;
             index++;
         });
+        var absentRate = document.querySelector('#absent-rate');
+        absentRate.innerHTML = '<span><b>' + getAbsentRate() + '</b></span>' + absentRate.innerHTML;
     });
-
-
+function remind(sid) {
+    var url = `http://localhost:8080/attendance_system_war/teacher/sendMail?sid=${sid}`;
+    window.location.href = url;
+}
 

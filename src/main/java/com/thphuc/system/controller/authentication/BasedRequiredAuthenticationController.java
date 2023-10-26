@@ -43,7 +43,6 @@ public abstract class BasedRequiredAuthenticationController extends HttpServlet 
                 }
             }
         }
-
         return false;
     }
 
@@ -54,7 +53,6 @@ public abstract class BasedRequiredAuthenticationController extends HttpServlet 
         } else {
             resp.sendRedirect(req.getContextPath() + "/login");
         }
-
     }
 
     @Override

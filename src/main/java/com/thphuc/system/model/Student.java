@@ -49,7 +49,6 @@ public class Student {
     @OneToOne
     @JoinColumn(name = "account-id")
     private Account account;
-
     @ManyToMany(cascade = CascadeType.ALL, mappedBy = "students")
     private Set<Group> groups;
 }

@@ -25,6 +25,7 @@
         <p>Class: <b id="group">${requestScope.group}</b> - Course: <b id="course">${requestScope.course}</b></p>
     </div>
     <div class="wrap">
+        <div id="absent-rate"><button type="button" class="btn btn-danger" onclick="remind(${requestScope.student.sid})">Remind</button></div>
         <table id="attendance" class="table table-striped">
             <thead>
             <tr>

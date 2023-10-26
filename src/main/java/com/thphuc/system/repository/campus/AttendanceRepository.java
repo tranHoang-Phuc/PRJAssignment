@@ -7,7 +7,7 @@ import jakarta.persistence.TypedQuery;
 
 import java.util.List;
 
-public class AttendanceRepository implements IRepository<Attendance>{
+public class AttendanceRepository implements IRepository<Attendance> {
 
     @Override
     public List<Attendance> getAll() {
@@ -77,7 +77,10 @@ public class AttendanceRepository implements IRepository<Attendance>{
     }
 
 
-
-
-
 }
+
+
+
+
+
+

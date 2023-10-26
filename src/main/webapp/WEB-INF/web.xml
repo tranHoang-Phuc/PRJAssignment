@@ -9,7 +9,14 @@
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
-    
+    <servlet>
+        <servlet-name>EmailController</servlet-name>
+        <servlet-class>com.thphuc.system.controller.teacher.EmailController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EmailController</servlet-name>
+        <url-pattern>/teacher/sendMail</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>ViewAttendanceController</servlet-name>
         <servlet-class>com.thphuc.system.controller.viewattendance.ViewAttendanceController</servlet-class>

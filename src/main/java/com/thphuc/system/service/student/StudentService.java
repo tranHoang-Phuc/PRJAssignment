@@ -45,4 +45,9 @@ public class StudentService {
         Student s = studentRepository.get(sid);
         return convertToDTO(s);
     }
+
+    public StudentDTO get(int sid) {
+        Student s =  studentRepository.get(sid);
+        return convertToDTO(s);
+    }
 }

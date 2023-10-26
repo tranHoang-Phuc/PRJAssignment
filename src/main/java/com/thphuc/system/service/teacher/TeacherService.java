@@ -44,12 +44,7 @@ public class TeacherService {
         return convertToLessonDTO(attendanceRepository.getAttendanceByLessonId(lessonId));
     }
 
-    public static void main(String[] args) {
-        AttendanceRepository attendanceRepository = new AttendanceRepository();
-        TeacherService teacherService = new TeacherService(attendanceRepository);
-        List<AttendanceDTO> attendanceDTOS = teacherService.getAttendanceByLessonId(13);
-        System.out.println(attendanceDTOS.size());
-    }
+
     private  List<AttendanceDTO> convertToLessonDTO(List<Attendance> list) {
         List<AttendanceDTO> attendanceDTOS = new ArrayList<>();
         for (Attendance attendance : list) {
@@ -104,6 +99,10 @@ public class TeacherService {
         List<Attendance> attendances =  attendanceRepository.getAttendanceByScode(scode, group, course);
         return convertToAttendanceDTO(attendances);
     }
+
+
+
+
     public List<AttendanceDTO> convertToAttendanceDTO(List<Attendance> attendances) {
         List<AttendanceDTO> attendanceDTOS = new ArrayList<>();
         for (Attendance a: attendances){
@@ -121,6 +120,7 @@ public class TeacherService {
             lessonDTO.setGroupname(a.getLesson().getGroup().getGroupName());
             lessonDTO.setDate(a.getLesson().getDate());
             attendanceDTO.setLesson(lessonDTO);
+            attendanceDTO.setStatus(a.getStatus());
             attendanceDTOS.add(attendanceDTO);
         }
         return attendanceDTOS;

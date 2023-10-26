@@ -8,16 +8,13 @@ import com.thphuc.system.dto.AccountDTO;
 import com.thphuc.system.dto.CampusDTO;
 import com.thphuc.system.repository.campus.AccountRepository;
 import com.thphuc.system.repository.campus.CampusRepository;
-import com.thphuc.system.repository.campus.IRepository;
 import com.thphuc.system.service.authentication.LoginService;
 import com.thphuc.system.service.campus.CampusService;
 import com.thphuc.system.util.SessionUtil;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
 import java.io.IOException;
 import java.util.List;
 
@@ -25,7 +22,6 @@ import java.util.List;
  * @author tran Hoang Phuc
  */
 public class LoginController extends HttpServlet {
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         AccountDTO account = (AccountDTO) SessionUtil.getInstance().getValue(req, "account");
