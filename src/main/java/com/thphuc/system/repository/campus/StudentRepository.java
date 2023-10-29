@@ -72,11 +72,9 @@ public class StudentRepository implements IRepository<Student>{
         return student;
     }
 
-    public static void main(String[] args) {
-        StudentRepository studentRepository = new StudentRepository();
-        Student s = studentRepository.getStudentByScode("1");
-        System.out.println(s.getLastName());
-    }
+
+
+
 
 
 }

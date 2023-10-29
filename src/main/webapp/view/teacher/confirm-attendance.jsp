@@ -45,11 +45,14 @@
             <tbody id="students">
             </tbody>
         </table>
-        </form>
+        <div class="button-area" style="margin-left: 50%; transform: translateX(-48%); width: fit-content;">
+            <button type="button" class="btn btn-primary" style="margin-right: 20px;" onclick="save()">Save</button>
+            <button type="button" class="btn btn-warning" onclick="edit(${requestScope.lesson.lessonID})">Edit</button>
+        </div>
     </div>
 </div>
 <jsp:include page="../root/footer.jsp"/>
 
-<script src="../js/teacher/confirm-attandance.js"></script>
+<script src="../js/teacher/confirm-attendance.js"></script>
 </body>
 </html>

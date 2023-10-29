@@ -29,9 +29,6 @@ public abstract class BaseAuthorizationController extends BasedRequiredAuthentic
             response.sendRedirect(request.getContextPath() + "/home");
         }
     }
-
-    protected abstract void doGet(HttpServletRequest request, HttpServletResponse response, AccountDTO user, Set<Feature> features) throws ServletException, IOException;
-    protected abstract void doPost(HttpServletRequest request, HttpServletResponse response, AccountDTO user, Set<Feature> features) throws ServletException, IOException;
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response, AccountDTO user) throws ServletException, IOException {
         if (isAuthorized(user, request.getServletPath())) {
@@ -40,4 +37,8 @@ public abstract class BaseAuthorizationController extends BasedRequiredAuthentic
             response.sendRedirect(request.getContextPath() + "/home");
         }
     }
+
+    protected abstract void doGet(HttpServletRequest request, HttpServletResponse response, AccountDTO user, Set<Feature> features) throws ServletException, IOException;
+    protected abstract void doPost(HttpServletRequest request, HttpServletResponse response, AccountDTO user, Set<Feature> features) throws ServletException, IOException;
+
 }

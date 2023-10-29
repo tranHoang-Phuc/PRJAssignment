@@ -94,16 +94,16 @@
         margin-bottom: 50px;
     }
 </style>
-
+<% String homeLink = request.getContextPath() + "/home";%>
 <body>
 <div id="head-nav">
     <div id="logo">
-        <a href=""><img src="https://cdn.haitrieu.com/wp-content/uploads/2021/10/Logo-Dai-hoc-FPT.png"
+        <a href=""<%= homeLink%>"><img src="https://cdn.haitrieu.com/wp-content/uploads/2021/10/Logo-Dai-hoc-FPT.png"
                         alt="logo-đại-học-fpt"></a>
     </div>
 
     <div class="nav">
-        <a href="#">
+        <a href="<%= homeLink%>">
             <span style="color: white; margin-left: 15px;" class="material-symbols-outlined">
                home
             </span>

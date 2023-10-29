@@ -6,6 +6,9 @@ import com.thphuc.system.model.Account;
 import com.thphuc.system.model.Student;
 import com.thphuc.system.repository.campus.StudentRepository;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class StudentService {
     private StudentRepository studentRepository;
 
@@ -50,4 +53,6 @@ public class StudentService {
         Student s =  studentRepository.get(sid);
         return convertToDTO(s);
     }
+
+
 }

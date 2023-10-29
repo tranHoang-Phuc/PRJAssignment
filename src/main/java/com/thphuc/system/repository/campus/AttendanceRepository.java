@@ -1,11 +1,15 @@
 package com.thphuc.system.repository.campus;
 
 import com.thphuc.system.model.Attendance;
+import com.thphuc.system.model.Student;
 import com.thphuc.system.util.JpaUtil;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 public class AttendanceRepository implements IRepository<Attendance> {
 
@@ -64,11 +68,11 @@ public class AttendanceRepository implements IRepository<Attendance> {
         return list;
     }
 
-    public List<Attendance> getAttendanceByScode(String scode, String group, String course) {
+    public List<Attendance> getAttendanceByScode(String sid, String group, String course) {
         EntityManager em = JpaUtil.getEntityManager();
         String jpql = "SELECT a FROM Attendance a WHERE a.lesson.lessonID IN (SELECT DISTINCT l.lessonID FROM Lesson l WHERE l.group.groupName=:group AND l.group.course.courseName=:course) AND a.student.sid=:sid ORDER BY a.lesson.sessionNo ASC";
         TypedQuery<Attendance> query = em.createQuery(jpql, Attendance.class);
-        query.setParameter("sid", scode);
+        query.setParameter("sid", sid);
         query.setParameter("group", group);
         query.setParameter("course", course);
         List<Attendance> list = query.getResultList();
@@ -77,6 +81,23 @@ public class AttendanceRepository implements IRepository<Attendance> {
     }
 
 
+    public Map<Student, List<Attendance>> getAttendanceForStudent(String semester, String courseName, String group) {
+        Map<Student, List<Attendance>> mappingAttendace = new LinkedHashMap<>();
+        EntityManager em = JpaUtil.getEntityManager();
+        String jpql = "SELECT s FROM Student s JOIN s.groups g JOIN g.course c JOIN c.semester se " +
+                "WHERE se.semesterName = :semesterName AND c.courseName = :courseName AND g.groupName = :groupName";
+        TypedQuery<Student> query = em.createQuery(jpql, Student.class);
+        query.setParameter("semesterName", semester);
+        query.setParameter("courseName", courseName);
+        query.setParameter("groupName", group);
+        List<Student> students = query.getResultList();
+
+        for(Student s: students) {
+            List<Attendance> attendances = getAttendanceByScode(s.getSid() +"", group, courseName);
+            mappingAttendace.put(s, attendances);
+        }
+        return mappingAttendace;
+    }
 }
 
 

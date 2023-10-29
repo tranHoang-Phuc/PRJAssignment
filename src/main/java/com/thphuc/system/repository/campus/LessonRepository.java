@@ -1,14 +1,18 @@
 package com.thphuc.system.repository.campus;
 
+import com.thphuc.system.model.Attendance;
 import com.thphuc.system.model.Instructor;
 import com.thphuc.system.model.Lesson;
+import com.thphuc.system.model.Student;
 import com.thphuc.system.util.DateTimeUtil;
 import com.thphuc.system.util.JpaUtil;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 
 import java.sql.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class LessonRepository implements IRepository<Lesson> {
     @Override
@@ -77,10 +81,6 @@ public class LessonRepository implements IRepository<Lesson> {
     }
 
 
-
-
-
-
     public List<Lesson> getWeeklyTimeTalbe(Date monday, Date sunday, Instructor instructor) {
         EntityManager em = JpaUtil.getEntityManager();
         try {
@@ -97,6 +97,7 @@ public class LessonRepository implements IRepository<Lesson> {
             em.close();
         }
     }
+
 
 
 }

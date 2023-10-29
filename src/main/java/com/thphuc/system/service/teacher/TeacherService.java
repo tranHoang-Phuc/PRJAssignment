@@ -11,8 +11,7 @@ import com.thphuc.system.repository.campus.AttendanceRepository;
 import com.thphuc.system.repository.campus.LessonRepository;
 import com.thphuc.system.repository.campus.StudentRepository;
 
-import java.util.List;
-import java.util.ArrayList;
+import java.util.*;
 
 public class TeacherService {
     private AttendanceRepository attendanceRepository;
@@ -124,5 +123,34 @@ public class TeacherService {
             attendanceDTOS.add(attendanceDTO);
         }
         return attendanceDTOS;
+    }
+    public Map<StudentDTO, List<AttendanceDTO>> getAttendanceForStudent(String semester, String courseName, String group) {
+        Map<Student, List<Attendance>> mappingAttendace = attendanceRepository.getAttendanceForStudent(semester, courseName, group);
+        return converToDTO(mappingAttendace);
+    }
+
+    private Map<StudentDTO, List<AttendanceDTO>> converToDTO( Map<Student, List<Attendance>> mappingAttendace) {
+        Map<StudentDTO, List<AttendanceDTO>> mapping = new LinkedHashMap<>();
+        for (Map.Entry<Student, List<Attendance>> entry : mappingAttendace.entrySet()) {
+            Student key = entry.getKey();
+            List<Attendance> attendanceList = entry.getValue();
+            List<AttendanceDTO> attendanceDTOS = convertToAttendanceDTO(attendanceList);
+            StudentDTO s = converToDTO(key);
+            mapping.put(s, attendanceDTOS);
+        }
+        return mapping;
+    }
+
+    private StudentDTO converToDTO(Student s) {
+        StudentDTO studentDTO = new StudentDTO();
+        studentDTO.setSid(s.getSid());
+        studentDTO.setScode(s.getScode());
+        studentDTO.setFirstName(s.getFirstName());
+        studentDTO.setLastName(s.getLastName());
+        studentDTO.setGender(s.getGender());
+        studentDTO.setPhone(s.getPhone());
+        studentDTO.setEmail(s.getEmail());
+        studentDTO.setImg(s.getImg());
+        return studentDTO;
     }
 }

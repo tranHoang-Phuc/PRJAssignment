@@ -12,16 +12,17 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>FPT University Academic Portal</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/teacher/remind.css">
 </head>
 <body>
     <jsp:include page="../root/header.jsp"></jsp:include>
 
     <div class="wrap">
         <form action="sendMail" method="POST">
-            <input type="text" value="${requestScope.student.email}" name="email" readonly><br>
-            <input type="text" name="subject" placeholder="Subject"><br>
-            <textarea name="content" placeholder="Content" cols="80" rows="30"></textarea><br>
-            <button type="submit">Send</button>
+            <input type="text" value="${requestScope.student.email}" name="email" readonly id="email"><br>
+            <input type="text" name="subject" placeholder="Subject" id="subject"><br>
+            <textarea name="content" placeholder="Content" cols="80" rows="20" id="content"></textarea><br>
+            <button type="submit" id="button">Send</button>
         </form>
     </div>
 
