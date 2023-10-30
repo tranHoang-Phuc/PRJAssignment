@@ -37,10 +37,19 @@ a:hover {
     margin-top: 50px;
     margin-left: 50%;
     transform: translateX(-50%);
-    width: fit-content;
+    width: 110%;
     padding: 10px;
     box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 10px;
     border-radius: 7px;
+}
+
+.table {
+    width: 100%;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+.table, tr, td {
+    border: 1px solid black;
 }
 
 .element-semester,
@@ -61,7 +70,4 @@ a:hover {
 .element-course.selected,
 .element-group.selected {
     background-color: orange;
-}
-button {
-    border: none;
 }
