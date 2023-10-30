@@ -54,5 +54,9 @@ public class StudentService {
         return convertToDTO(s);
     }
 
+    public StudentDTO getStudentByAccount(int accountID) {
+        Student s = studentRepository.getStudentByAccount(accountID);
+        return convertToDTO(s);
+    }
 
 }

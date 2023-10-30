@@ -58,6 +58,7 @@ public class GroupRepository implements IRepository<Group> {
     public List<Group> getGroupBySemesterCourse(String courseName, String semester) {
         EntityManager em = JpaUtil.getEntityManager();
         String jpql = "SELECT g From Group g JOIN g.course c JOIN c.semester s WHERE c.courseName = :courseName AND s.semesterName = :semester";
+
         List<Group> groups = em.createQuery(jpql, Group.class).setParameter("courseName", courseName).setParameter("semester", semester).getResultList();
         em.close();
         return groups;

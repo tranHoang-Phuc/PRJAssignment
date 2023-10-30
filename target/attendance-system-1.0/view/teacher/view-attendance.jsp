@@ -13,11 +13,11 @@
     <title>Title</title>
     <title>Attendance Table</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    <link rel="stylesheet" href="../../css/teacher/view-attendance.css">
+    <link rel="stylesheet" href="../css/teacher/view-attendance.css">
 </head>
 <body>
 <jsp:include page="../root/header.jsp"></jsp:include>
-
+<input type="hidden" value="${sessionScope.account.accountID}" id="accountId">
     <div id="header">
         <div class="choice">
             <table>
@@ -75,6 +75,6 @@
         </div>
     </div>
 <jsp:include page="../root/footer.jsp"></jsp:include>
-<script src="../../js/teacher/view-attendance.js"></script>
+<script src="../js/teacher/view-attendance.js"></script>
 </body>
 </html>

@@ -1,23 +1,27 @@
 package com.thphuc.system.service.teacher;
 
 import com.thphuc.system.dto.AttendanceDTO;
+import com.thphuc.system.dto.InstructorDTO;
 import com.thphuc.system.dto.LessonDTO;
 import com.thphuc.system.dto.StudentDTO;
-import com.thphuc.system.model.Attendance;
-import com.thphuc.system.model.Lesson;
-import com.thphuc.system.model.Student;
-import com.thphuc.system.model.TimeSlot;
+import com.thphuc.system.model.*;
 import com.thphuc.system.repository.campus.AttendanceRepository;
+import com.thphuc.system.repository.campus.InstructorRepository;
 import com.thphuc.system.repository.campus.LessonRepository;
 import com.thphuc.system.repository.campus.StudentRepository;
 
 import java.util.*;
 
 public class TeacherService {
+    private InstructorRepository instructorRepository;
     private AttendanceRepository attendanceRepository;
     private StudentRepository studentRepository;
 
     private LessonRepository lessonRepository;
+
+    public TeacherService(InstructorRepository instructorRepository) {
+        this.instructorRepository = instructorRepository;
+    }
 
     public TeacherService(AttendanceRepository attendanceRepository, StudentRepository studentRepository, LessonRepository lessonRepository) {
         this.attendanceRepository = attendanceRepository;
@@ -152,5 +156,20 @@ public class TeacherService {
         studentDTO.setEmail(s.getEmail());
         studentDTO.setImg(s.getImg());
         return studentDTO;
+    }
+
+    private InstructorDTO convertToInstructorDTO(Instructor i) {
+        InstructorDTO instructorDTO = new InstructorDTO();
+        instructorDTO.setInstructorID(i.getInstructorID());
+        instructorDTO.setICode(i.getICode());
+        instructorDTO.setFirstName(i.getFirstName());
+        instructorDTO.setLastName(i.getLastName());
+        instructorDTO.setPhone(i.getPhone());
+        instructorDTO.setEmail(i.getEmail());
+        instructorDTO.setImg(i.getImg());
+        return instructorDTO;
+    }
+    public InstructorDTO getInstructorByAccountId(int accountId) {
+        return convertToInstructorDTO(instructorRepository.getInstructorByAccountId(accountId));
     }
 }

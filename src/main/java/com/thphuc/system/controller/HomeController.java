@@ -16,7 +16,7 @@ public class HomeController extends BasedRequiredAuthenticationController {
         Map<String, String> featureMappingUrl = new HashMap<>();
         if(user.getRole().getRoleId() == 1) {
             featureMappingUrl.put("Weekly timetable", "weeklySchedule");
-            featureMappingUrl.put("Attendance report","report");
+            featureMappingUrl.put("Attendance report","teacher/report-attendance");
             featureMappingUrl.put("Instructor Profile","teacher/profile");
             request.setAttribute("featureMappingUrl", featureMappingUrl);
             request.getRequestDispatcher("view/teacher/home.jsp").forward(request, response);

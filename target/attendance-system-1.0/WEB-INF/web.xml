@@ -65,6 +65,14 @@
         <servlet-name>LogoutController</servlet-name>
         <url-pattern>/logout</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>ReportAttendanceController</servlet-name>
+        <servlet-class>com.thphuc.system.controller.teacher.ReportAttendanceController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ReportAttendanceController</servlet-name>
+        <url-pattern>/teacher/report-attendance</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

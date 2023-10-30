@@ -35,4 +35,12 @@ public class InstructorRepository implements IRepository<Instructor> {
     public void delete(int id) {
 
     }
+
+    public Instructor getInstructorByAccountId(int accountId) {
+        EntityManager em = JpaUtil.getEntityManager();
+        String jpql = "SELECT i FROM Instructor i WHERE i.account.accountID = :accountId";
+        Instructor instructor = em.createQuery(jpql, Instructor.class).setParameter("accountId", accountId).getSingleResult();
+        em.close();
+        return instructor;
+    }
 }
