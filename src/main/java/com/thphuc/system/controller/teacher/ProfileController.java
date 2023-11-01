@@ -20,8 +20,6 @@ public class ProfileController extends BaseAuthorizationController {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response, AccountDTO user, Set<Feature> features) throws ServletException, IOException {
         InstructorRepository instructorRepository = new InstructorRepository();
-        StudentRepository studentRepository = new StudentRepository();
-        StudentService studentService = new StudentService(studentRepository);
         TeacherService teacherService = new TeacherService(instructorRepository);
         int accountId = user.getAccountID();
         InstructorDTO instructor = teacherService.getInstructorByAccountId(accountId);

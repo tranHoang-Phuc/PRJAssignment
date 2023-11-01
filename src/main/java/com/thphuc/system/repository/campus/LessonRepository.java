@@ -80,6 +80,29 @@ public class LessonRepository implements IRepository<Lesson> {
         }
     }
 
+    public List<Lesson> getStudentWeeklyTimeTable(Student student) {
+        EntityManager em = JpaUtil.getEntityManager();
+        Date monday = DateTimeUtil.getMondayOfCurrentWeek();
+        Date sunday = DateTimeUtil.getSundayOfCurrentWeek();
+        String jpql = "SELECT l FROM Lesson l WHERE l.id IN (SELECT DISTINCT a.lesson.id FROM Attendance a WHERE a.student.scode = :studentCode)" +
+                "AND l.date >= :startDate AND l.date <= :endDate";
+        TypedQuery<Lesson> query = em.createQuery(jpql, Lesson.class);
+        query.setParameter("studentCode", student.getScode());
+        query.setParameter("startDate", monday);
+        query.setParameter("endDate", sunday);
+        List<Lesson> list = query.getResultList();
+        return list;
+    }
+
+    public static void main(String[] args) {
+       LessonRepository lessonRepository = new LessonRepository();
+       Student s = new Student();
+       s.setScode("phucth");
+       List<Lesson> studentList = lessonRepository.getStudentWeeklyTimeTable(s);
+        for (Lesson lesson : studentList) {
+            System.out.println(lesson.getLessonID());
+        }
+    }
 
     public List<Lesson> getWeeklyTimeTalbe(Date monday, Date sunday, Instructor instructor) {
         EntityManager em = JpaUtil.getEntityManager();
@@ -98,6 +121,17 @@ public class LessonRepository implements IRepository<Lesson> {
         }
     }
 
+    public List<Lesson> getStudentWeeklyTimeTable(Date monday, Date sunday, Student student) {
+        EntityManager em = JpaUtil.getEntityManager();
+        String jpql = "SELECT l FROM Lesson l WHERE l.id IN (SELECT DISTINCT a.lesson.id FROM Attendance a WHERE a.student.scode = :studentCode)" +
+                "AND l.date >= :startDate AND l.date <= :endDate";
+        TypedQuery<Lesson> query = em.createQuery(jpql, Lesson.class);
+        query.setParameter("studentCode", student.getScode());
+        query.setParameter("startDate", monday);
+        query.setParameter("endDate", sunday);
+        List<Lesson> list = query.getResultList();
+        return list;
+    }
 
 
 }

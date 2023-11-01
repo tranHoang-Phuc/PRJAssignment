@@ -78,10 +78,11 @@ function convertTime(time) {
         return formattedString;
     }
 }
+var icode = document.querySelector('#search-bar').value;
 
 function showLession() {
 
-    var url = 'http://localhost:8080/attendance_system_war/api/teacher/report/schedule-of-week/sonnt5';
+    var url = `http://localhost:8080/attendance_system_war/api/teacher/report/schedule-of-week/${icode}`;
     fetch(url)
         .then(response => response.json())
         .then(data => {
@@ -324,7 +325,7 @@ function getMonday(n, x) {
 }
 
 function showLessionAterChange(date) {
-    var url = 'http://localhost:8080/attendance_system_war/api/teacher/report/schedule-of-week/sonnt5/' + `${date}`;
+    var url = `http://localhost:8080/attendance_system_war/api/teacher/report/schedule-of-week/${icode}/` + `${date}`;
     fetch(url)
         .then(response => response.json())
         .then(data => {

@@ -1,0 +1,25 @@
+.info-box {
+
+    padding: 20px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 10px;
+    width: fit-content;
+    border-radius: 10px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+.img-detail img {
+    width: 400px;
+    height: 400px;
+}
+
+#table {
+    border-collapse: collapse;
+}
+
+.info-detail {
+    margin-top: 15px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    width: 400px;
+}

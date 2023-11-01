@@ -161,15 +161,24 @@ public class TeacherService {
     private InstructorDTO convertToInstructorDTO(Instructor i) {
         InstructorDTO instructorDTO = new InstructorDTO();
         instructorDTO.setInstructorID(i.getInstructorID());
-        instructorDTO.setICode(i.getICode());
+        instructorDTO.setInsCode(i.getICode());
         instructorDTO.setFirstName(i.getFirstName());
         instructorDTO.setLastName(i.getLastName());
         instructorDTO.setPhone(i.getPhone());
         instructorDTO.setEmail(i.getEmail());
         instructorDTO.setImg(i.getImg());
+        instructorDTO.setDob(i.getDob());
         return instructorDTO;
     }
     public InstructorDTO getInstructorByAccountId(int accountId) {
         return convertToInstructorDTO(instructorRepository.getInstructorByAccountId(accountId));
+    }
+
+    public static void main(String[] args) {
+        InstructorRepository instructorRepository = new InstructorRepository();
+        TeacherService teacherService = new TeacherService(instructorRepository);
+        int accountId = 1;
+        InstructorDTO instructor = teacherService.getInstructorByAccountId(accountId);
+        System.out.println(instructor.getDob());
     }
 }

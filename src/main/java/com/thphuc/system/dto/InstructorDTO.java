@@ -13,7 +13,7 @@ import java.sql.Date;
 @Setter
 public class InstructorDTO {
     private int instructorID;
-    private String iCode;
+    private String insCode;
     private String firstName;
     private String lastName;
     private Date dob;

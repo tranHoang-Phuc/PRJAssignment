@@ -14,6 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+<input type="hidden" value="${sessionScope.user.userCode}">
 <jsp:include page="../root/header.jsp"/>
 <c:forEach items="${requestScope.featureMappingUrl}" var="f">
     <ul>

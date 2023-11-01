@@ -67,4 +67,17 @@ public class LessonService {
     }
 
 
+    public List<LessonDTO> getStudentScheduleOfWeek(String studentCode) {
+         Student s = new Student();
+         s.setScode(studentCode);
+        return convertToDTO(lessonRepository.getStudentWeeklyTimeTable(s));
+    }
+
+    public List<LessonDTO> getStudentScheduleOfWeek(String sCode, String monday) {
+        Date mondayDate = Date.valueOf(monday);
+        Date sundayDate = Date.valueOf(mondayDate.toLocalDate().plusDays(6));
+        Student instructor = new Student();
+        instructor.setScode(sCode);
+        return convertToDTO(lessonRepository.getStudentWeeklyTimeTable(mondayDate, sundayDate, instructor));
+    }
 }

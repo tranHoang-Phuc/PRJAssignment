@@ -22,6 +22,7 @@ public class HomeController extends BasedRequiredAuthenticationController {
             request.getRequestDispatcher("view/teacher/home.jsp").forward(request, response);
         } else if(user.getRole().getRoleId() == 2) {
             featureMappingUrl.put("Weekly timetable", "weeklySchedule");
+            featureMappingUrl.put("Attendance report", "student/report-attendance");
             featureMappingUrl.put("Student Profile","student/profile");
             request.setAttribute("featureMappingUrl", featureMappingUrl);
             request.getRequestDispatcher("view/student/home.jsp").forward(request, response);
