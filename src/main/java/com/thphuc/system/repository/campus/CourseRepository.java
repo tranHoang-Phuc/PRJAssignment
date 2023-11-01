@@ -3,6 +3,7 @@ package com.thphuc.system.repository.campus;
 import com.thphuc.system.model.Course;
 import com.thphuc.system.util.JpaUtil;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
 
 import java.util.List;
 
@@ -66,4 +67,17 @@ public class CourseRepository implements IRepository<Course>{
         entityManager.close();
         return courses;
     }
+
+    public List<Course> getCourseBySemesterAndStudentCode(String semester, String sid) {
+        EntityManager entityManager = JpaUtil.getEntityManager();
+        String jpql = "SELECT c FROM Course c JOIN c.semester s WHERE s.semesterName = :semester AND c.courseID IN(SELECT g.course.courseID FROM Group g JOIN g.students s WHERE s.sid = :sid)";
+        TypedQuery<Course> query = entityManager.createQuery(jpql, Course.class);
+        query.setParameter("semester", semester);
+        query.setParameter("sid", sid);
+        List<Course> courses = query.getResultList();
+        entityManager.close();
+        return courses;
+    }
+
+
 }

@@ -26,7 +26,7 @@ public class ViewAttendanceController extends BaseAuthorizationController {
         request.setAttribute("student", studentDTO);
         request.setAttribute("group", group);
         request.setAttribute("course", course);
-        request.getRequestDispatcher("../view/student/view-attendance.jsp").forward(request, response);
+        request.getRequestDispatcher("../view/student/view-attendanceDetail.jsp").forward(request, response);
     }
 
     @Override

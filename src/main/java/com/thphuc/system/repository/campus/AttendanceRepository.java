@@ -98,6 +98,22 @@ public class AttendanceRepository implements IRepository<Attendance> {
         }
         return mappingAttendace;
     }
+
+    public List<Attendance> getAttendanceByCourseAndSid(String semester, String course, String sid) {
+        EntityManager em = JpaUtil.getEntityManager();
+        String jpql = "SELECT a FROM Attendance a JOIN a.lesson l WHERE a.student.sid = :sid " +
+                "AND l.group.course.courseID IN (SELECT g.course.courseID FROM Group g JOIN g.course c JOIN c.semester s " +
+                "WHERE s.semesterName = :semester AND c.courseName = :course)";
+        TypedQuery<Attendance> query = em.createQuery(jpql, Attendance.class);
+        query.setParameter("sid", sid);
+        query.setParameter("semester", semester);
+        query.setParameter("course", course);
+        List<Attendance> attendances = query.getResultList();
+        em.close();
+        return attendances;
+    }
+
+
 }
 
 

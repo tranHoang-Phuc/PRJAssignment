@@ -19,13 +19,26 @@
 <body>
 <jsp:include page="../root/header.jsp"></jsp:include>
 <div class="header">
+    <div class="choice">
+        <table>
+            <tr>
+                <td><b>Semester</b> &nbsp; &nbsp; &nbsp;</td>
+                <td style="display: flex;" id="semester"></td>
+            </tr>
+            <tr>
+                <td><b>Course</b> &nbsp; &nbsp; &nbsp; </td>
+                <td style="display: flex;" id="course">
+
+                </td>
+            </tr>
+
+        </table>
+    </div>
     <div id="student-info">
         <input type="hidden" value="${requestScope.student.sid}" readonly id="sid">
-        <p>${requestScope.student.firstName} ${requestScope.student.lastName}</p>
-        <p>Class: <b id="group">${requestScope.group}</b> - Course: <b id="course">${requestScope.course}</b></p>
-    </div>
-    <div class="wrap">
-        <div id="absent-rate"><button type="button" class="btn btn-danger" onclick="remind(${requestScope.student.sid})">Remind</button></div>
+        </div>
+    <div class="wrap" style="display: none;">
+        <div id="absent-rate"></div>
         <table id="attendance" class="table table-striped">
             <thead>
             <tr>

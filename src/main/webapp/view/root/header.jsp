@@ -98,7 +98,7 @@
 <body>
 <div id="head-nav">
     <div id="logo">
-        <a href=""<%= homeLink%>"><img src="https://cdn.haitrieu.com/wp-content/uploads/2021/10/Logo-Dai-hoc-FPT.png"
+        <a href="<%= homeLink%>"<%= homeLink%>"><img src="https://cdn.haitrieu.com/wp-content/uploads/2021/10/Logo-Dai-hoc-FPT.png"
                         alt="logo-đại-học-fpt"></a>
     </div>
 

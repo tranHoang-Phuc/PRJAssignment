@@ -13,7 +13,7 @@ public class CourseService {
     public CourseService(CourseRepository courseRepository) {
         this.courseRepository = courseRepository;
     }
-    private List<CourseDTO> getCourseBySemester(String semester) {
+    public List<CourseDTO> getCourseBySemester(String semester) {
         List<Course> courses = courseRepository.getCourseBySemester(semester);
         return convertToDTO(courses);
     }
@@ -26,5 +26,10 @@ public class CourseService {
             courseDTOS.add(courseDTO);
         }
         return courseDTOS;
+    }
+
+    public List<CourseDTO> getCourseBySemesterAndStudentCode(String semester, String studentCode) {
+        List<Course> courses = courseRepository.getCourseBySemesterAndStudentCode(semester, studentCode);
+        return convertToDTO(courses);
     }
 }

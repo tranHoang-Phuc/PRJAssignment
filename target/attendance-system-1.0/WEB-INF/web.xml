@@ -81,6 +81,14 @@
         <servlet-name>ProfileController</servlet-name>
         <url-pattern>/teacher/profile</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>StudentAttendanceController</servlet-name>
+        <servlet-class>com.thphuc.system.controller.student.ReportAttendanceController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>StudentAttendanceController</servlet-name>
+        <url-pattern>/student/report-attendance</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
