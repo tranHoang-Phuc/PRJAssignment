@@ -133,5 +133,13 @@ public class LessonRepository implements IRepository<Lesson> {
         return list;
     }
 
+    public void update(int lessonId, String event) {
+        EntityManager em = JpaUtil.getEntityManager();
+        String jpql = "UPDATE Lesson l SET l.event = :event WHERE l.lessonID = :lessonId";
+        em.getTransaction().begin();
+        em.createQuery(jpql).setParameter("event", event).setParameter("lessonId", lessonId).executeUpdate();
+        em.getTransaction().commit();
+        em.close();
+    }
 
 }

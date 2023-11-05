@@ -100,6 +100,7 @@ function showLession() {
                     var timeLast = convertTime(dat["timeLast"]);
                     var attendanceStatus = dat["attendanceStatus"]
                     var dayOfWeek = new Date(date).getDay();
+                    var event = dat["event"] == null? '' : dat["event"];
                     var slot = parseInt(timeSlot);
                     switch (slot) {
                         case 6:
@@ -138,7 +139,8 @@ function showLession() {
                                 }
                                 lessonSlot.innerHTML = ` <div class="lesson" onclick="showLessonDetail(${lessonID})">
                                                          <span class="group">${groupName}</span><br><span class="course">${courseName}</span>
-                                                         <span class="room">${roomName}</span><br><br>
+                                                         <span class="room">${roomName}</span><br>
+                                                          <span class="event">${event}</span><br>
                                                          <span class="material-symbols-outlined" id="clock">
                                                          schedule
                                                          </span>
@@ -158,7 +160,8 @@ function showLession() {
                                 }
                                 lessonSlot.innerHTML = ` <div class="lesson" onclick="showLessonDetail(${lessonID})">
                                                    <span class="group">${groupName}</span><br><span class="course">${courseName}</span>
-                                                   <span class="room">${roomName}</span><br><br>
+                                                   <span class="room">${roomName}</span><br>
+                                                    <span class="event">${event}</span><br>
                                                    <span class="material-symbols-outlined" id="clock">
                                                    schedule
                                                    </span>
@@ -178,7 +181,8 @@ function showLession() {
                                 }
                                 lessonSlot.innerHTML = ` <div class="lesson" onclick="showLessonDetail(${lessonID})">
                                                             <span class="group">${groupName}</span><br><span class="course">${courseName}</span>
-                                                            <span class="room">${roomName}</span><br><br>
+                                                            <span class="room">${roomName}</span><br>
+                                                                <span class="event">${event}</span><br>
                                                             <span class="material-symbols-outlined" id="clock">
                                                             schedule
                                                             </span>
@@ -198,7 +202,8 @@ function showLession() {
                                 }
                                 lessonSlot.innerHTML = ` <div class="lesson" onclick="showLessonDetail(${lessonID})">
                                                    <span class="group">${groupName}</span><br><span class="course">${courseName}</span>
-                                                   <span class="room">${roomName}</span><br><br>
+                                                   <span class="room">${roomName}</span><br>
+                                                    <span class="event">${event}</span><br>
                                                    <span class="material-symbols-outlined" id="clock">
                                                    schedule
                                                    </span>
@@ -218,7 +223,8 @@ function showLession() {
                                 }
                                 lessonSlot.innerHTML = ` <div class="lesson" onclick="showLessonDetail(${lessonID})">
                                                    <span class="group">${groupName}</span><br><span class="course">${courseName}</span>
-                                                   <span class="room">${roomName}</span><br><br>
+                                                   <span class="room">${roomName}</span><br>
+                                                    <span class="event">${event}</span><br>
                                                    <span class="material-symbols-outlined" id="clock">
                                                    schedule
                                                    </span>
@@ -237,7 +243,8 @@ function showLession() {
                                 }
                                 lessonSlot.innerHTML = `<div class="lesson" onclick="showLessonDetail(${lessonID})">
                                                    <span class="group">${groupName}</span><br><span class="course">${courseName}</span>
-                                                   <span class="room">${roomName}</span><br><br>
+                                                   <span class="room">${roomName}</span><br>
+                                                    <span class="event">${event}</span><br>
                                                    <span class="material-symbols-outlined" id="clock">
                                                    schedule
                                                    </span>
@@ -256,7 +263,8 @@ function showLession() {
                                 }
                                 lessonSlot.innerHTML = ` <div class="lesson" onclick="showLessonDetail(${lessonID})">
                                                    <span class="group">${groupName}</span><br><span class="course">${courseName}</span>
-                                                   <span class="room">${roomName}</span><br><br>
+                                                   <span class="room">${roomName}</span><br>
+                                                     <span class="event">${event}</span><br>                                       
                                                    <span class="material-symbols-outlined" id="clock">
                                                    schedule
                                                    </span>
@@ -338,6 +346,7 @@ function showLessionAterChange(date) {
                     var date = dat["date"];
                     var timeLast = convertTime(dat["timeLast"]);
                     var attendanceStatus = dat["attendanceStatus"]
+                    var event = dat["event"] == null? '' : dat["event"];
                     var dayOfWeek = new Date(date).getDay();
                     var slot = parseInt(timeSlot);
                     switch (slot) {
@@ -376,7 +385,8 @@ function showLessionAterChange(date) {
                                 }
                                 lessonSlot.innerHTML = ` <div class="lesson" onclick="showLessonDetail(${lessonID})">
                                                          <span class="group">${groupName}</span><br><span class="course">${courseName}</span>
-                                                         <span class="room">${roomName}</span><br><br>
+                                                         <span class="room">${roomName}</span><br>
+                                                         <span class="event">${event}</span><br>
                                                          <span class="material-symbols-outlined" id="clock">
                                                          schedule
                                                          </span>
@@ -396,7 +406,8 @@ function showLessionAterChange(date) {
                                 }
                                 lessonSlot.innerHTML = ` <div class="lesson" onclick="showLessonDetail(${lessonID})">
                                                    <span class="group">${groupName}</span><br><span class="course">${courseName}</span>
-                                                   <span class="room">${roomName}</span><br><br>
+                                                   <span class="room">${roomName}</span><br>
+                                                    <span class="event">${event}</span><br>
                                                    <span class="material-symbols-outlined" id="clock">
                                                    schedule
                                                    </span>
@@ -416,7 +427,8 @@ function showLessionAterChange(date) {
                                 }
                                 lessonSlot.innerHTML = ` <div class="lesson" onclick="showLessonDetail(${lessonID})">
                                                             <span class="group">${groupName}</span><br><span class="course">${courseName}</span>
-                                                            <span class="room">${roomName}</span><br><br>
+                                                            <span class="room">${roomName}</span><br>
+                                                            <span class="event">${event}</span><br>
                                                             <span class="material-symbols-outlined" id="clock">
                                                             schedule
                                                             </span>
@@ -436,7 +448,8 @@ function showLessionAterChange(date) {
                                 }
                                 lessonSlot.innerHTML = ` <div class="lesson" onclick="showLessonDetail(${lessonID})">
                                                    <span class="group">${groupName}</span><br><span class="course">${courseName}</span>
-                                                   <span class="room">${roomName}</span><br><br>
+                                                   <span class="room">${roomName}</span><br>
+                                                    <span class="event">${event}</span><br>
                                                    <span class="material-symbols-outlined" id="clock">
                                                    schedule
                                                    </span>
@@ -456,7 +469,8 @@ function showLessionAterChange(date) {
                                 }
                                 lessonSlot.innerHTML = ` <div class="lesson" onclick="showLessonDetail(${lessonID})">
                                                    <span class="group">${groupName}</span><br><span class="course">${courseName}</span>
-                                                   <span class="room">${roomName}</span><br><br>
+                                                   <span class="room">${roomName}</span><br>
+                                                    <span class="event">${event}</span><br>
                                                    <span class="material-symbols-outlined" id="clock">
                                                    schedule
                                                    </span>
@@ -475,7 +489,8 @@ function showLessionAterChange(date) {
                                 }
                                 lessonSlot.innerHTML = `<div class="lesson" onclick="showLessonDetail(${lessonID})">
                                                    <span class="group">${groupName}</span><br><span class="course">${courseName}</span>
-                                                   <span class="room">${roomName}</span><br><br>
+                                                   <span class="room">${roomName}</span><br>
+                                                    <span class="event">${event}</span><br>
                                                    <span class="material-symbols-outlined" id="clock">
                                                    schedule
                                                    </span>
@@ -494,7 +509,8 @@ function showLessionAterChange(date) {
                                 }
                                 lessonSlot.innerHTML = ` <div class="lesson" onclick="showLessonDetail(${lessonID})">
                                                    <span class="group">${groupName}</span><br><span class="course">${courseName}</span>
-                                                   <span class="room">${roomName}</span><br><br>
+                                                   <span class="room">${roomName}</span><br>
+                                                    <span class="event">${event}</span><br>
                                                    <span class="material-symbols-outlined" id="clock">
                                                    schedule
                                                    </span>

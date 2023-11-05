@@ -286,8 +286,24 @@ function changeDateFormat(inputDate) {
 }
 
 function showLessonDetail(lessonID) {
-    var url = "teacher/attendance?lessonId=" + lessonID;
-    window.location = url
+    var urlAPI = `http://localhost:8080/attendance_system_war/api/teacher/report/lesson/${lessonID}`;
+    fetch(urlAPI)
+        .then(response => response.json())
+        .then(data => {
+            var lessonDate = new Date(data["date"]);
+            var currentDate = new Date();
+            if (currentDate < lessonDate) {
+                var url = "teacher/addEvent?lessonId=" + lessonID;
+                    window.location.href = url;
+
+            } else {
+               var url = "teacher/attendance?lessonId=" + lessonID;
+                window.location.href = url;
+
+            }
+        });
+
+
 }
 
 updateTimeTable();

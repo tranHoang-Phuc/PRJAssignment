@@ -45,5 +45,7 @@ public class Lesson {
     private Boolean attendanceStatus;
     @Column(name = "date")
     private Date date;
+    @Column(name = "event")
+    private String event;
 
 }

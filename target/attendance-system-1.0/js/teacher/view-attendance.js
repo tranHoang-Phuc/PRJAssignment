@@ -61,6 +61,7 @@ function showAttendance(group) {
     const groupName = group.textContent;
     var attendanceUrl = `http://localhost:8080/attendance_system_war/api/university/student/${semester}/${course}/${groupName}`;
     var no = 0;
+    var colorStatus = '';
     fetch(attendanceUrl)
         .then(response => response.json())
         .then(data => {
@@ -103,13 +104,13 @@ function showAttendance(group) {
                     row.innerHTML += `<td>${statusLabel}</td>`;
                     absentPersent = (absentCount / attendanceData.length) * 100;
                     if (absentPersent > 20) {
-                        row.style.background = " rgba(255, 0, 0, 0.5)"
+                        colorStatus = "rgba(255, 0, 0, 0.5)"
                     } else if (absentPersent > 10 && absentPersent <= 20) {
-                        row.style.background = "rgba(255,215,0, 0.5)";
+                        colorStatus = "rgba(255,215,0, 0.5)";
                     }
 
                 });
-                row.innerHTML += `<td class="persent">${absentPersent.toFixed(0)}%</td>`
+                row.innerHTML += `<td class="persent" style="background-color: ${colorStatus}">${absentPersent.toFixed(0)}%</td>`
                 studentData.appendChild(row);
             });
         });

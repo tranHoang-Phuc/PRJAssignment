@@ -36,6 +36,7 @@ public class LessonService {
             lessonDTO.setDate(lesson.getDate());
             lessonDTO.setSessionNo(lesson.getSessionNo());
             lessonDTO.setAttendanceStatus(lesson.getAttendanceStatus());
+            lessonDTO.setEvent(lesson.getEvent());
             lessonDTOs.add(lessonDTO);
         }
         return lessonDTOs;
@@ -80,4 +81,9 @@ public class LessonService {
         instructor.setScode(sCode);
         return convertToDTO(lessonRepository.getStudentWeeklyTimeTable(mondayDate, sundayDate, instructor));
     }
+
+    public void update(int lessonId, String event) {
+        lessonRepository.update(lessonId, event);
+    }
+
 }

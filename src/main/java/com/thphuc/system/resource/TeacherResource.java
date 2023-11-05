@@ -64,5 +64,12 @@ public class TeacherResource {
         TeacherService teacherService = new TeacherService(attendanceRepository);
         return teacherService.getAttendanceByScode(scode, group, course);
     }
-
+    @GET
+    @Path("lesson/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public LessonDTO getLessonByID(@PathParam("id") String id) {
+        LessonRepository lessonRepository = new LessonRepository();
+        LessonService lessonService = new LessonService(lessonRepository);
+        return lessonService.getLessonById(Integer.parseInt(id));
+    }
 }
