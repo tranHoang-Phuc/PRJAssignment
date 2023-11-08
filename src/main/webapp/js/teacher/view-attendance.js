@@ -61,12 +61,12 @@ function showAttendance(group) {
     const groupName = group.textContent;
     var attendanceUrl = `http://localhost:8080/attendance_system_war/api/university/student/${semester}/${course}/${groupName}`;
     var no = 0;
-    var colorStatus = '';
     fetch(attendanceUrl)
         .then(response => response.json())
         .then(data => {
-            var absentPersent = 0;
             data.forEach(dat => {
+                var colorStatus = '';
+                var absentPersent = 0;
                 var absentCount = 0;
                 no++;
                 var sid = dat["studentDTO"]["sid"];
@@ -83,7 +83,6 @@ function showAttendance(group) {
                               <td>${sCode}</td>
                               <td>${group}</td>`;
                 attendanceData.forEach(a => {
-
 
                     var statusLabel = '';
                     var status = a["status"];
@@ -103,16 +102,20 @@ function showAttendance(group) {
                     }
                     row.innerHTML += `<td>${statusLabel}</td>`;
                     absentPersent = (absentCount / attendanceData.length) * 100;
-                    if (absentPersent > 20) {
-                        colorStatus = "rgba(255, 0, 0, 0.5)"
-                    } else if (absentPersent > 10 && absentPersent <= 20) {
-                        colorStatus = "rgba(255,215,0, 0.5)";
-                    }
+
 
                 });
-                row.innerHTML += `<td class="persent" style="background-color: ${colorStatus}">${absentPersent.toFixed(0)}%</td>`
+                if (absentPersent > 20) {
+                    colorStatus = "rgba(255, 0, 0, 0.5)"
+                } else if (absentPersent > 10 && absentPersent <= 20) {
+                    colorStatus = "rgba(255,215,0, 0.5)";
+                } else {
+                    colorStatus ="rgba(255,255,255, 0.5)";
+                }
+                row.innerHTML += `<td class="persent" style="background-color: ${colorStatus};">${absentPersent.toFixed(0)}%</td>`
                 studentData.appendChild(row);
             });
+
         });
 
     document.querySelector('.wrap').style.display = 'block';

@@ -1,14 +1,8 @@
 package com.thphuc.system.service.teacher;
 
-import com.thphuc.system.dto.AttendanceDTO;
-import com.thphuc.system.dto.InstructorDTO;
-import com.thphuc.system.dto.LessonDTO;
-import com.thphuc.system.dto.StudentDTO;
+import com.thphuc.system.dto.*;
 import com.thphuc.system.model.*;
-import com.thphuc.system.repository.campus.AttendanceRepository;
-import com.thphuc.system.repository.campus.InstructorRepository;
-import com.thphuc.system.repository.campus.LessonRepository;
-import com.thphuc.system.repository.campus.StudentRepository;
+import com.thphuc.system.repository.campus.*;
 
 import java.util.*;
 
@@ -48,7 +42,7 @@ public class TeacherService {
     }
 
 
-    private  List<AttendanceDTO> convertToLessonDTO(List<Attendance> list) {
+    private List<AttendanceDTO> convertToLessonDTO(List<Attendance> list) {
         List<AttendanceDTO> attendanceDTOS = new ArrayList<>();
         for (Attendance attendance : list) {
             AttendanceDTO attendanceDTO = new AttendanceDTO();
@@ -99,16 +93,14 @@ public class TeacherService {
     }
 
     public List<AttendanceDTO> getAttendanceByScode(String scode, String group, String course) {
-        List<Attendance> attendances =  attendanceRepository.getAttendanceByScode(scode, group, course);
+        List<Attendance> attendances = attendanceRepository.getAttendanceByScode(scode, group, course);
         return convertToAttendanceDTO(attendances);
     }
 
 
-
-
     public List<AttendanceDTO> convertToAttendanceDTO(List<Attendance> attendances) {
         List<AttendanceDTO> attendanceDTOS = new ArrayList<>();
-        for (Attendance a: attendances){
+        for (Attendance a : attendances) {
             AttendanceDTO attendanceDTO = new AttendanceDTO();
             LessonDTO lessonDTO = new LessonDTO();
             TimeSlot timeSlot = new TimeSlot();
@@ -128,12 +120,13 @@ public class TeacherService {
         }
         return attendanceDTOS;
     }
+
     public Map<StudentDTO, List<AttendanceDTO>> getAttendanceForStudent(String semester, String courseName, String group) {
         Map<Student, List<Attendance>> mappingAttendace = attendanceRepository.getAttendanceForStudent(semester, courseName, group);
         return converToDTO(mappingAttendace);
     }
 
-    private Map<StudentDTO, List<AttendanceDTO>> converToDTO( Map<Student, List<Attendance>> mappingAttendace) {
+    private Map<StudentDTO, List<AttendanceDTO>> converToDTO(Map<Student, List<Attendance>> mappingAttendace) {
         Map<StudentDTO, List<AttendanceDTO>> mapping = new LinkedHashMap<>();
         for (Map.Entry<Student, List<Attendance>> entry : mappingAttendace.entrySet()) {
             Student key = entry.getKey();
@@ -170,15 +163,31 @@ public class TeacherService {
         instructorDTO.setDob(i.getDob());
         return instructorDTO;
     }
+
     public InstructorDTO getInstructorByAccountId(int accountId) {
         return convertToInstructorDTO(instructorRepository.getInstructorByAccountId(accountId));
     }
 
-    public static void main(String[] args) {
-        InstructorRepository instructorRepository = new InstructorRepository();
-        TeacherService teacherService = new TeacherService(instructorRepository);
-        int accountId = 1;
-        InstructorDTO instructor = teacherService.getInstructorByAccountId(accountId);
-        System.out.println(instructor.getDob());
+
+    public List<LessonDTO> getTodayTeacherListLesson(AccountDTO account) {
+        AccountRepository accountRepository = new AccountRepository();
+        int instructorID = accountRepository.getInstructorID(account);
+        List<Lesson> lessons = lessonRepository.getTeacherListLessonToday(instructorID);
+        return convertToDTO(lessons);
+    }
+
+
+    public List<LessonDTO> convertToDTO(List<Lesson> lessons) {
+        List<LessonDTO> lessonDTOS = new ArrayList<>();
+        for (Lesson l : lessons) {
+            LessonDTO lessonDTO = new LessonDTO();
+            lessonDTO.setLessonID(l.getLessonID());
+            lessonDTO.setGroupname(l.getGroup().getGroupName());
+            lessonDTO.setCourseName(l.getGroup().getCourse().getCourseName());
+            lessonDTO.setRoomName(l.getRoom().getRoomName());
+            lessonDTO.setTimeLast(l.getTimeSlot().getStartTime() + "-" + l.getTimeSlot().getEndTime());
+            lessonDTOS.add(lessonDTO);
+        }
+        return lessonDTOS;
     }
 }

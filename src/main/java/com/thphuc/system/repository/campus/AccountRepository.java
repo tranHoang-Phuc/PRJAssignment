@@ -1,5 +1,6 @@
 package com.thphuc.system.repository.campus;
 
+import com.thphuc.system.dto.AccountDTO;
 import com.thphuc.system.model.Account;
 import com.thphuc.system.model.Campus;
 import com.thphuc.system.util.JpaUtil;
@@ -72,6 +73,24 @@ public class AccountRepository implements IRepository<Account> {
         }
     }
 
+    public int getInstructorID(AccountDTO account) {
+        EntityManager em = JpaUtil.getEntityManager();
+        String jpql = "SELECT i.instructorID FROM Instructor i WHERE i.account.id = :accountID";
+        TypedQuery<Integer> query = em.createQuery(jpql, Integer.class);
+        query.setParameter("accountID", account.getAccountID());
+        int instructorID = query.getSingleResult();
+        em.close();
+        return instructorID;
+    }
 
 
+    public int getStudentId(AccountDTO account) {
+        EntityManager em = JpaUtil.getEntityManager();
+        String jpql = "SELECT s.sid FROM Student s WHERE s.account.id = :accountID";
+        TypedQuery<Integer> query = em.createQuery(jpql, Integer.class);
+        query.setParameter("accountID", account.getAccountID());
+        int studentID = query.getSingleResult();
+        em.close();
+        return studentID;
+    }
 }

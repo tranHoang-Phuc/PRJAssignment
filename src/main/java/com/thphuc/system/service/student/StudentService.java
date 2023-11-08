@@ -4,11 +4,10 @@ import com.thphuc.system.dto.AccountDTO;
 import com.thphuc.system.dto.AttendanceDTO;
 import com.thphuc.system.dto.LessonDTO;
 import com.thphuc.system.dto.StudentDTO;
-import com.thphuc.system.model.Account;
-import com.thphuc.system.model.Attendance;
-import com.thphuc.system.model.Student;
-import com.thphuc.system.model.TimeSlot;
+import com.thphuc.system.model.*;
+import com.thphuc.system.repository.campus.AccountRepository;
 import com.thphuc.system.repository.campus.AttendanceRepository;
+import com.thphuc.system.repository.campus.LessonRepository;
 import com.thphuc.system.repository.campus.StudentRepository;
 
 import java.util.ArrayList;
@@ -18,12 +17,28 @@ public class StudentService {
     private StudentRepository studentRepository;
     private AttendanceRepository attendanceRepository;
 
+    private AccountRepository accountRepository;
+
+    private LessonRepository lessonRepository;
     public StudentService(StudentRepository studentRepository) {
         this.studentRepository = studentRepository;
     }
 
     public StudentService(AttendanceRepository attendanceRepository) {
         this.attendanceRepository = attendanceRepository;
+    }
+
+    public StudentService(AccountRepository accountRepository) {
+        this.accountRepository = accountRepository;
+    }
+
+    public StudentService(LessonRepository lessonRepository) {
+        this.lessonRepository = lessonRepository;
+    }
+
+    public StudentService(AccountRepository accountRepository, LessonRepository lessonRepository) {
+        this.accountRepository = accountRepository;
+        this.lessonRepository = lessonRepository;
     }
 
 
@@ -102,4 +117,24 @@ public class StudentService {
         return attendanceDTOS;
     }
 
+    public List<LessonDTO> getTodayStudentLessonList(AccountDTO account) {
+        AccountRepository accountRepository = new AccountRepository();
+        int sid = accountRepository.getStudentId(account);
+        List<Lesson> lessons =  lessonRepository.getStudentListLessonToday(sid);
+        return convertToDTO(lessons);
+    }
+
+    public List<LessonDTO> convertToDTO(List<Lesson> lessons) {
+        List<LessonDTO> lessonDTOS = new ArrayList<>();
+        for (Lesson l : lessons) {
+            LessonDTO lessonDTO = new LessonDTO();
+            lessonDTO.setLessonID(l.getLessonID());
+            lessonDTO.setGroupname(l.getGroup().getGroupName());
+            lessonDTO.setCourseName(l.getGroup().getCourse().getCourseName());
+            lessonDTO.setRoomName(l.getRoom().getRoomName());
+            lessonDTO.setTimeLast(l.getTimeSlot().getStartTime() + "-" + l.getTimeSlot().getEndTime());
+            lessonDTOS.add(lessonDTO);
+        }
+        return lessonDTOS;
+    }
 }

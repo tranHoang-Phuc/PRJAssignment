@@ -94,15 +94,7 @@ public class LessonRepository implements IRepository<Lesson> {
         return list;
     }
 
-    public static void main(String[] args) {
-       LessonRepository lessonRepository = new LessonRepository();
-       Student s = new Student();
-       s.setScode("phucth");
-       List<Lesson> studentList = lessonRepository.getStudentWeeklyTimeTable(s);
-        for (Lesson lesson : studentList) {
-            System.out.println(lesson.getLessonID());
-        }
-    }
+
 
     public List<Lesson> getWeeklyTimeTalbe(Date monday, Date sunday, Instructor instructor) {
         EntityManager em = JpaUtil.getEntityManager();
@@ -141,5 +133,26 @@ public class LessonRepository implements IRepository<Lesson> {
         em.getTransaction().commit();
         em.close();
     }
+
+    public List<Lesson> getTeacherListLessonToday(int instructorId) {
+        EntityManager em = JpaUtil.getEntityManager();
+        String jpql = "SELECT l from Lesson l WHERE l.instructor.instructorID = :instructorId AND l.date = :date";
+        TypedQuery<Lesson> query = em.createQuery(jpql, Lesson.class);
+        query.setParameter("instructorId", instructorId);
+        query.setParameter("date", DateTimeUtil.getCurrentSqlDate());
+        List<Lesson> list = query.getResultList();
+        return list;
+    }
+
+    public List<Lesson> getStudentListLessonToday(int sid) {
+        EntityManager em = JpaUtil.getEntityManager();
+        String jpql = "SELECT l from Lesson l WHERE l.id IN (SELECT DISTINCT a.lesson.id FROM Attendance a WHERE a.student.sid = :sid) AND l.date = :date";
+        TypedQuery<Lesson> query = em.createQuery(jpql, Lesson.class);
+        query.setParameter("sid", sid);
+        query.setParameter("date", DateTimeUtil.getCurrentSqlDate());
+        List<Lesson> list = query.getResultList();
+        return list;
+    }
+
 
 }
