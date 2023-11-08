@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.sql.Date;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -14,6 +16,7 @@ public class StudentDTO {
     private String scode;
     private String firstName;
     private String lastName;
+    private Date dob;
     private boolean gender;
     private String phone;
     private String email;

@@ -291,16 +291,28 @@ function showLessonDetail(lessonID) {
         .then(response => response.json())
         .then(data => {
             var lessonDate = new Date(data["date"]);
+            var status = data["attendanceStatus"];
             var currentDate = new Date();
-            if (currentDate < lessonDate) {
-                var url = "teacher/addEvent?lessonId=" + lessonID;
+            if (!status) {
+                if (currentDate < lessonDate) {
+                    var url = "teacher/addEvent?lessonId=" + lessonID;
                     window.location.href = url;
 
-            } else {
-               var url = "teacher/attendance?lessonId=" + lessonID;
-                window.location.href = url;
+                } else {
+                    var url = "teacher/attendance?lessonId=" + lessonID;
+                    window.location.href = url;
 
+                }
+            } else {
+                if (currentDate > lessonDate) {
+                    alert("The period for changing attendance is over.");
+                }
+                if(currentDate === lessonDate) {
+                    var url = "teacher/attendance?lessonId=" + lessonID;
+                    window.location.href = url;
+                }
             }
+
         });
 
 

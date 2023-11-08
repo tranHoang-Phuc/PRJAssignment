@@ -98,6 +98,14 @@
         <servlet-name>AddEventController</servlet-name>
         <url-pattern>/teacher/addEvent</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>StudentProfileController</servlet-name>
+        <servlet-class>com.thphuc.system.controller.student.ProfileController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>StudentProfileController</servlet-name>
+        <url-pattern>/student/profile</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

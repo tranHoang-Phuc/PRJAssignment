@@ -39,6 +39,7 @@ public class StudentService {
         studentDTO.setFirstName(s.getFirstName());
         studentDTO.setLastName(s.getLastName());
         studentDTO.setGender(s.getGender());
+        studentDTO.setDob(s.getDob());
         studentDTO.setPhone(s.getPhone());
         studentDTO.setEmail(s.getEmail());
         studentDTO.setImg(s.getImg());

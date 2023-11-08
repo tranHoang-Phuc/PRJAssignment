@@ -104,6 +104,9 @@ function showGroup(course) {
                     status = 'Future';
                     color = 'orange';
                 }
+                if (slot > 6) {
+                    slot = slot - 6;
+                }
                 tbody.innerHTML += `  <tr>
                                  <td>${index}</td>
                                  <td>${attendanceDate}</td>

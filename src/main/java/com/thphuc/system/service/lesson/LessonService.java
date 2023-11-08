@@ -62,6 +62,7 @@ public class LessonService {
         lessonDTO.setTimeSlot(lesson.getTimeSlot().getTimeSlotID() + "");
         lessonDTO.setTimeLast(lesson.getTimeSlot().getStartTime() + " - " + lesson.getTimeSlot().getEndTime());
         lessonDTO.setDate(lesson.getDate());
+        lessonDTO.setEvent(lesson.getEvent());
         lessonDTO.setSessionNo(lesson.getSessionNo());
         lessonDTO.setAttendanceStatus(lesson.getAttendanceStatus());
         return lessonDTO;
