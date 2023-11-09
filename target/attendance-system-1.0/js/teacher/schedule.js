@@ -293,6 +293,15 @@ function showLessonDetail(lessonID) {
             var lessonDate = new Date(data["date"]);
             var status = data["attendanceStatus"];
             var currentDate = new Date();
+            var year = currentDate.getFullYear();
+            var month = String(currentDate.getMonth() + 1).padStart(2, '0'); // Tháng bắt đầu từ 0, nên cộng thêm 1 và định dạng thành chuỗi 2 chữ số
+            var day = String(currentDate.getDate()).padStart(2, '0');
+            var formattedLessonDate = year + '-' + month + '-' + day;
+
+            var year1 = lessonDate.getFullYear();
+            var month1 = String(lessonDate.getMonth() + 1).padStart(2, '0');
+            var day1 = String(lessonDate.getDate()).padStart(2, '0');
+            var formattedLessonDate1 = year1 + '-' + month1 + '-' + day1;
             if (!status) {
                 if (currentDate < lessonDate) {
                     var url = "teacher/addEvent?lessonId=" + lessonID;
@@ -301,16 +310,16 @@ function showLessonDetail(lessonID) {
                 } else {
                     var url = "teacher/attendance?lessonId=" + lessonID;
                     window.location.href = url;
-
                 }
             } else {
-                if (currentDate > lessonDate) {
-                    alert("The period for changing attendance is over.");
-                }
-                if(currentDate === lessonDate) {
+                if(formattedLessonDate === formattedLessonDate1) {
                     var url = "teacher/attendance?lessonId=" + lessonID;
                     window.location.href = url;
                 }
+                else if (currentDate> lessonDate) {
+                    alert("The period for changing attendance is over.");
+                }
+
             }
 
         });
