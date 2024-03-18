@@ -1,4 +1,4 @@
-# PRJAssignment-Attendance System of FPT University (Thầy sonnt5 - 10 điểm)
+# PRJAssignment-Attendance System of FPT University
 
 Front-end: JSP, CSS, Javascript, Bootstrap
 
